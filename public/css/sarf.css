@@ -1,0 +1,122 @@
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+  
+  /* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+/* Add some padding inside the card container */
+.card-container {
+    padding: 2px 16px;
+}
+
+input {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid gray;
+}
+
+.required-field::before {
+    content: "*";
+    color: red;
+}
+
+.secondary-color{
+    background-color: #eaeaea;
+}
+
+.borders{
+    border-radius: 2%;
+    border-top: #FFC107 solid 15px;
+    /* border-top-width: thick !important; */
+}
+
+.is-active{
+    border-bottom: white solid 3px;
+    position: relative;
+    z-index: 1;
+}
+
+.btnsubmit{
+    background-color: #00008B !important;
+    color: white !important;
+}
+
+.links .is-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    background: white;
+    z-index: -1;
+    transition: transform 0.3s;
+}
+.links .is-active:hover::after {
+    transform: scaleY(1);
+}
+
+.contact-button:hover{
+    background-color: #00008B !important;
+    color: white;
+}
+
+.img-nav{
+    border-radius: 50%;
+    /* width:30px;
+    height: 40px; */
+    padding: 10px 10px 10px 10px;
+}
+
+.img-nav1{
+    background-color: #00008B !important;
+}
+
+.whiteincolor{
+    color: white;
+}
+
+
+.ellipsis1 {
+    width: 260px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin: 0 5px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.main-card{
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+
+/* Media Query */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100% !important;
+    }
+}
