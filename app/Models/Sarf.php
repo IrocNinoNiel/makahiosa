@@ -24,4 +24,13 @@ class Sarf extends Model
         'amountAllocated',
         'sourceOfFunds',
     ];
+
+
+    public function org(){
+        return $this->belongsTo(User::class,'organization_id');
+    }
+
+    public function files() {
+        return $this->hasMany(FileUserInput::class,'sarves_id');
+    }
 }

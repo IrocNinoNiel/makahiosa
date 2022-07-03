@@ -27,12 +27,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/timeline', [App\Http\Controllers\HomeController::class, 'showTimeline'])->name('timeline');
     Route::get('/organization', [App\Http\Controllers\HomeController::class, 'showOrganization'])->name('organization');
-    Route::get('/sarflist', [App\Http\Controllers\HomeController::class, 'showSarfList'])->name('sarflist');
-    Route::get('/sarf', [App\Http\Controllers\SarfController::class, 'index'])->name('sarf');
+    
     Route::get('/orglist', [App\Http\Controllers\HomeController::class, 'showOrgList'])->name('orglist');
     Route::get('/applist', [App\Http\Controllers\HomeController::class, 'showAppList'])->name('applist');
     Route::get('/eventlist', [App\Http\Controllers\HomeController::class, 'showEventList'])->name('eventlist');
+
+    // Sarf Routes
+    Route::get('/sarflist', [App\Http\Controllers\SarfController::class, 'sarflist'])->name('sarflist');
+    Route::get('/sarf', [App\Http\Controllers\SarfController::class, 'index'])->name('sarf');
     Route::post('/sarf', [App\Http\Controllers\SarfController::class, 'store'])->name('sarf.store');
+    Route::get('/sarf/{sarf}',[App\Http\Controllers\SarfController::class, 'show'])->name('sarf.show');
 
 
     Route::group(['middleware' => 'CheckRole', 'prefix' => 'admin'], function() { 

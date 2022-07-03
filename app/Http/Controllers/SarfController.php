@@ -63,4 +63,13 @@ class SarfController extends Controller
             return view('sarf')->with('success','Sarf Created');
         }
     }
+
+    public function sarflist() {
+        $sarfs = Sarf::all();
+        return view('sarflist')->with('sarfs', $sarfs);
+    }
+
+    public function show(Sarf $sarf) {
+        return view('sarf.show')->with('sarf',$sarf);
+    }
 }

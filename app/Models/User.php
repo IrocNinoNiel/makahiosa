@@ -46,4 +46,8 @@ class User extends Authenticatable
     public function information(){
         return $this->hasOne(UserInformation::class);
     }
+
+    public function sarf(){
+        return $this->hasMany(Sarf::class);
+    }
 }

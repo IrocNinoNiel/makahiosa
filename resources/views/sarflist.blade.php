@@ -36,121 +36,40 @@
                                      </div>
                                  </div>
                              </div>
-                             <div class="card-body main-card">
-                                 <div class="container">
-                                     <div class="col">
-                                         <p class="font-weight-bold float-right">Completed</p>
-                                     </div>
-                                     <br>
-                                     <div class="card m-0" style="width: 50%;">
-                                         <div class="card-body">
-                                             <div class="row">
-                                                 <div class="col-2 m-auto">
-                                                     
-                                                     <i class="fa fa-question m-auto img-nav img-nav1 whiteincolor"></i>
-                                                     
-                                                 </div>
-                                                 <div class="col">
-                                                     <div class="row">
-                                                         <p>Completed On <span class="font-weight-bold">Nov 10, 2021 12:23 PM</span></p>
-                                                     </div>
-                                                     <div class="row">
-                                                         <p class="ellipsis1">Need Help? Know more here. If there are issues, Click Contact Us.</p>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <h3 class="mt-2">Title of Event #1</h3>
-                                     <h5>Type of the Event #1</h5>
-                                     <hr/>
-                                 </div>
-                                 <div class="container">
-                                     <div class="col">
-                                         <p class="font-weight-bold float-right">Completed</p>
-                                     </div>
-                                     <br>
-                                     <div class="card m-0" style="width: 50%;">
-                                         <div class="card-body">
-                                             <div class="row">
-                                                 <div class="col-2 m-auto">
-                                                     
-                                                     <i class="fa fa-question m-auto img-nav img-nav1 whiteincolor"></i>
-                                                     
-                                                 </div>
-                                                 <div class="col">
-                                                     <div class="row">
-                                                         <p>Completed On <span class="font-weight-bold">Nov 10, 2021 12:23 PM</span></p>
-                                                     </div>
-                                                     <div class="row">
-                                                         <p class="ellipsis1">Need Help? Know more here. If there are issues, Click Contact Us.</p>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <h3 class="mt-2">Title of Event #1</h3>
-                                     <h5>Type of the Event #1</h5>
-                                     <hr/>
-                                 </div>
-                                 <div class="container">
-                                     <div class="col">
-                                         <p class="font-weight-bold float-right">Completed</p>
-                                     </div>
-                                     <br>
-                                     <div class="card m-0" style="width: 50%;">
-                                         <div class="card-body">
-                                             <div class="row">
-                                                 <div class="col-2 m-auto">
-                                                     
-                                                     <i class="fa fa-question m-auto img-nav img-nav1 whiteincolor"></i>
-                                                     
-                                                 </div>
-                                                 <div class="col">
-                                                     <div class="row">
-                                                         <p>Completed On <span class="font-weight-bold">Nov 10, 2021 12:23 PM</span></p>
-                                                     </div>
-                                                     <div class="row">
-                                                         <p class="ellipsis1">Need Help? Know more here. If there are issues, Click Contact Us.</p>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <h3 class="mt-2">Title of Event #1</h3>
-                                     <h5>Type of the Event #1</h5>
-                                     <hr/>
-                                 </div>
-                                 <div class="container">
-                                     <div class="col">
-                                         <p class="font-weight-bold float-right">Completed</p>
-                                     </div>
-                                     <br>
-                                     <div class="card m-0" style="width: 50%;">
-                                         <div class="card-body">
-                                             <div class="row">
-                                                 <div class="col-2 m-auto">
-                                                     
-                                                     <i class="fa fa-question m-auto img-nav img-nav1 whiteincolor"></i>
-                                                     
-                                                 </div>
-                                                 <div class="col">
-                                                     <div class="row">
-                                                         <p>Completed On <span class="font-weight-bold">Nov 10, 2021 12:23 PM</span></p>
-                                                     </div>
-                                                     <div class="row">
-                                                         <p class="ellipsis1">Need Help? Know more here. If there are issues, Click Contact Us.</p>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <h3 class="mt-2">Title of Event #1</h3>
-                                     <h5>Type of the Event #1</h5>
-                                     <hr/>
-                                 </div>
-                                 
-                             </div>
+                            @foreach ($sarfs as $sarf)
+                                <div class="card-body main-card">
+                                    <div class="container">
+                                        <div class="col">
+                                            <p class="font-weight-bold float-right">{{$sarf->status}}</p>
+                                        </div>
+                                        <br>
+                                        <div class="card m-0" style="width: 50%;">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-2 m-auto">
+                                                        
+                                                        <i class="fa fa-question m-auto img-nav img-nav1 whiteincolor"></i>
+                                                        
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="row">
+                                                            <p>Date <span class="font-weight-bold">{{$sarf->dateOfEvent}}</span></p>
+                                                        </div>
+                                                        <div class="row">
+                                                            <p class="ellipsis1">Need More Details? <a href="{{ route('sarf.show', $sarf->id) }}">Click Here</a></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3 class="mt-2">{{$sarf->titleOfTheEvent}}</h3>
+                                        <h5>{{$sarf->org->information->orgname}}</h5>
+                                        <hr/>
+                                    </div>
+                                    
+                                </div>
+                                
+                            @endforeach
                          </div>
                      </div>
                  </div>
