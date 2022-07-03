@@ -194,6 +194,21 @@
         <div class="card">
           <div class="card-body">
             <div class="mb-3">
+              <label for="endDateOfTheEvent" class="form-label fw-bold">End Date of the Event <span class="required-field"></span></label>
+              <div class="input-container">
+                <input type="Date" name="endDateOfTheEvent" placeholder="End Date of Event">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-2">
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label fw-bold">Hours Duration <span class="required-field"></span></label>
               <div class="input-container">
                 <input type="integer" name="hoursDuration" placeholder="Hours Duration">

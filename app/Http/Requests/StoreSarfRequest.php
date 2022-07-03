@@ -30,6 +30,7 @@ class StoreSarfRequest extends FormRequest
             'titleOfTheEvent'=>'required',
             'generalObjective'=>'required',
             'dateOfEvent'=>'required',
+            'endDateOfTheEvent'=>'required',
             'hoursDuration'=>'required',
             'startOfEvent'=>'required',
             'endOfEvent'=>'required',

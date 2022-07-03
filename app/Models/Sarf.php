@@ -16,6 +16,7 @@ class Sarf extends Model
         'titleOfTheEvent',
         'generalObjective',
         'dateOfEvent',
+        'endDateOfTheEvent',
         'hoursDuration',
         'startOfEvent',
         'endOfEvent',

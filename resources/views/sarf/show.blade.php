@@ -28,7 +28,10 @@
                             - Specific Objective Sample 3<br/>
                         </li>
                         <li class="list-group-item">
-                            Date: {{$sarf->dateOfEvent}}
+                            Start Date: {{$sarf->dateOfEvent}}
+                        </li>
+                        <li class="list-group-item">
+                            End Date: {{$sarf->endDateOfTheEvent}}
                         </li>
                         <li class="list-group-item">
                             Duration: {{$sarf->hoursDuration}}
