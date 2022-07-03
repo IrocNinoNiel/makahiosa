@@ -34,4 +34,8 @@ class Sarf extends Model
     public function files() {
         return $this->hasMany(FileUserInput::class,'sarves_id');
     }
+
+    public function specific() {
+        return $this->hasMany(SpecificObjective::class,'sarf_id');
+    }
 }

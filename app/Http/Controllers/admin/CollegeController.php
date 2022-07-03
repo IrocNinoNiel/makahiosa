@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use App\Models\College;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCollegeRequest;
 
 class CollegeController extends Controller
@@ -11,11 +12,11 @@ class CollegeController extends Controller
     public function index() {
 
         $colleges = College::where('status','=',true)->where('name','!=','None')->get();
-        return view('college.index')->with('colleges', $colleges);
+        return view('admin.college.index')->with('colleges', $colleges);
     }
 
     public function create() {
-        return view('college.create');
+        return view('admin.college.create');
     }
 
     public function store(StoreCollegeRequest $request) {
@@ -26,7 +27,7 @@ class CollegeController extends Controller
     }
 
     public function edit(College $college) {
-        return view('college.edit')->with('college',$college);
+        return view('admin.college.edit')->with('college',$college);
     }
 
     public function update(StoreCollegeRequest $request, College $college) {

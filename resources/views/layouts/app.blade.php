@@ -128,7 +128,7 @@
                                             Event Management
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('applist') }}">Show Application List</a>
+                                            <a class="dropdown-item" href="{{ route('admin.applist') }}">Show Application List</a>
                                             <a class="dropdown-item" href="{{ route('eventlist') }}">Show Event List</a>
                                         </div>
                                     </li>

@@ -23,9 +23,9 @@
                         </li>
                         <li class="list-group-item">
                             Specific Objective <br/>
-                            - Specific Objective Sample 1<br/>
-                            - Specific Objective Sample 2<br/>
-                            - Specific Objective Sample 3<br/>
+                            @foreach ($sarf->specific as $specific)
+                                - {{$specific->name}}<br/>
+                            @endforeach
                         </li>
                         <li class="list-group-item">
                             Start Date: {{$sarf->dateOfEvent}}
@@ -55,7 +55,7 @@
                             Source of Funds : {{$sarf->sourceOfFunds}}
                         </li>
                         <li class="list-group-item">
-                            Source of Funds : @if ($sarf->status == 'pending')
+                            Status : @if ($sarf->status == 'pending')
                                 <button class="btn btn-outline-warning">Pending</button>
                             @elseif ($sarf->status == 'approved')
                                 <button class="btn btn-outline-warning">Approved</button>

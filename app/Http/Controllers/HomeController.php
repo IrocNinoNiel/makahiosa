@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        if(Auth::user()->user_type == 'user') {
+        if(!Auth::user()->is_admin) {
             return view('home');
         }
 
@@ -51,7 +51,4 @@ class HomeController extends Controller
         return view('applist');
     }
 
-    public function showEventList() {
-        return view('eventlist');
-    }
 }

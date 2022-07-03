@@ -39,6 +39,7 @@ class StoreSarfRequest extends FormRequest
             'amountAllocated'=>'required',
             'sourceOfFunds'=>'required',
             'files'=>'required',
+            'objectives'=>'required'
         ];
     }
 }

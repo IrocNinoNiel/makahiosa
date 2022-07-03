@@ -1,0 +1,884 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 03, 2022 at 07:36 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `db_cmisidojtmgmtsys`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_100000_create_password_resets_table', 1),
+(2, '2019_08_19_000000_create_failed_jobs_table', 1),
+(3, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(4, '2022_04_22_134318_create_user_types_table', 1),
+(5, '2022_04_22_140412_create_divisions_table', 1),
+(6, '2022_04_22_141249_create_courses_table', 1),
+(7, '2022_04_22_141833_create_schools_table', 1),
+(8, '2022_04_22_142345_create_users_table', 1),
+(9, '2022_04_22_145015_create_skill_sets_table', 1),
+(10, '2022_04_22_145451_create_user_skill_sets_table', 1),
+(11, '2022_04_22_150126_create_requirements_table', 1),
+(12, '2022_05_02_224606_create_tasks_table', 1),
+(13, '2022_05_02_233758_create_user_permissions_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_division`
+--
+
+CREATE TABLE `tbl_division` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `division_name` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_division`
+--
+
+INSERT INTO `tbl_division` (`trans_id`, `division_name`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'Administrative and Training', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(2, 'Research and Innovation', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(3, 'Software Development and Database Management', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(4, 'System Administration and Hardware Maintenance', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(6, 'TBD', 'joshua', '2022-05-12 11:49:21', NULL, NULL, 'y', '2022-05-12 03:49:21', '2022-05-12 03:49:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_ref_course`
+--
+
+CREATE TABLE `tbl_ref_course` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `course_name` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_ref_course`
+--
+
+INSERT INTO `tbl_ref_course` (`trans_id`, `course_name`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'BSIT', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-13 02:52:58'),
+(2, 'BSTCM', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(3, 'BSEE', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(4, 'BSDD', 'Banana', '2022-05-13 10:52:21', NULL, NULL, 'n', '2022-05-13 02:52:21', '2022-05-13 02:52:21'),
+(6, 'BSDD', 'Banana', '2022-05-13 12:11:02', NULL, NULL, 'y', '2022-05-13 04:11:02', '2022-05-13 04:11:02'),
+(7, 'BSSS', 'Banana', '2022-05-17 02:10:47', NULL, NULL, 'y', '2022-05-16 18:10:47', '2022-05-16 18:10:47'),
+(8, 'czcxz', 'Banana', '2022-05-17 23:11:10', NULL, NULL, 'n', '2022-05-17 15:11:10', '2022-05-17 15:13:31'),
+(9, 'None', 'joshua', '2022-05-17 23:21:57', NULL, NULL, 'y', '2022-05-17 15:21:57', '2022-05-17 15:21:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_ref_school`
+--
+
+CREATE TABLE `tbl_ref_school` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `school_name` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_ref_school`
+--
+
+INSERT INTO `tbl_ref_school` (`trans_id`, `school_name`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'University of Science and Technology of Southern Philippines', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-17 15:07:56'),
+(2, 'University of Tacloban', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(3, 'Phinma Cagayan De Oro College', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-12 19:40:37'),
+(4, 'PUP', 'Banana', '2022-05-13 03:35:25', NULL, NULL, 'n', '2022-05-12 19:35:25', '2022-05-12 19:35:25'),
+(5, 'PUP', 'Banana', '2022-05-13 12:13:55', NULL, NULL, 'y', '2022-05-13 04:13:55', '2022-05-13 04:13:55'),
+(6, 'University of Science and Technology of Tacloban', 'Banana', '2022-05-17 23:01:45', NULL, NULL, 'n', '2022-05-17 15:01:45', '2022-05-17 15:06:48'),
+(7, 'None', 'joshua', '2022-05-17 23:21:57', NULL, NULL, 'y', '2022-05-17 15:21:57', '2022-05-17 15:21:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_ref_skillset`
+--
+
+CREATE TABLE `tbl_ref_skillset` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `skillset` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_ref_skillset`
+--
+
+INSERT INTO `tbl_ref_skillset` (`trans_id`, `skillset`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'UI Designing', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(2, 'Flutter Programmer', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(3, 'Laravel Developer', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_ref_taskstatus`
+--
+
+CREATE TABLE `tbl_ref_taskstatus` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `task_status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_ref_taskstatus`
+--
+
+INSERT INTO `tbl_ref_taskstatus` (`trans_id`, `task_status`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'Returned', 'Joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(2, 'New', 'Joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(3, 'Ongoing', 'Joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(4, 'Approved', 'Joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(5, 'Pending', 'Joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_requirements`
+--
+
+CREATE TABLE `tbl_requirements` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `application_url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `resume_url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brgycert_url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `waiver_url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `endorsement_url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_requirements`
+--
+
+INSERT INTO `tbl_requirements` (`trans_id`, `user_id`, `application_url`, `resume_url`, `brgycert_url`, `waiver_url`, `endorsement_url`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 1, 'https://drive.google.com/file/d/1bdPs4Q8z7DX3yPSh1SpKoTfncbiUwW2d/view?usp=sharing', 'https://drive.google.com/file/d/1bdPs4Q8z7DX3yPSh1SpKoTfncbiUwW2d/view?usp=sharing', 'https://drive.google.com/file/d/1bdPs4Q8z7DX3yPSh1SpKoTfncbiUwW2d/view?usp=sharing', 'https://drive.google.com/file/d/1bdPs4Q8z7DX3yPSh1SpKoTfncbiUwW2d/view?usp=sharing', 'https://drive.google.com/file/d/1bdPs4Q8z7DX3yPSh1SpKoTfncbiUwW2d/view?usp=sharing', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(2, 2, 'https://drive.google.com/drive/u/0/', 'google.com', 'https://drive.google.com/drive/u/0/', 'https://drive.google.com/drive/u/0/', 'https://drive.google.com/drive/u/0/', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-05-11 04:07:36'),
+(3, 3, 'https://www.figma.com/file/89ylsK9HiwE702iTh2rvtI/OJT-MGMT-System?node-id=70%3A2596', 'https://www.figma.com/file/89ylsK9HiwE702iTh2rvtI/OJT-MGMT-System?node-id=70%3A2596', 'https://www.figma.com/file/89ylsK9HiwE702iTh2rvtI/OJT-MGMT-System?node-id=70%3A2596', 'https://www.figma.com/file/89ylsK9HiwE702iTh2rvtI/OJT-MGMT-System?node-id=70%3A2596', 'https://www.figma.com/file/89ylsK9HiwE702iTh2rvtI/OJT-MGMT-System?node-id=70%3A2596', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(4, 4, 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'N', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(5, 5, 'https://drive.google.com/file/d/1rSFy0zp25asIh6kjMLSp0o6ajhAJ4l-_/view', 'https://drive.google.com/file/d/1rSFy0zp25asIh6kjMLSp0o6ajhAJ4l-_/view', 'https://drive.google.com/file/d/1rSFy0zp25asIh6kjMLSp0o6ajhAJ4l-_/view', 'https://drive.google.com/file/d/1rSFy0zp25asIh6kjMLSp0o6ajhAJ4l-_/view', 'https://drive.google.com/file/d/1rSFy0zp25asIh6kjMLSp0o6ajhAJ4l-_/view', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(6, 6, 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(8, 8, 'https://www.reddit.com/r/worldnews/', 'https://www.reddit.com/r/worldnews/', 'https://www.reddit.com/r/worldnews/', 'https://www.reddit.com/r/worldnews/', 'https://www.reddit.com/r/worldnews/', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(9, 9, 'https://www.lightnovelpub.com/app', 'https://www.lightnovelpub.com/app', 'https://www.lightnovelpub.com/app', 'https://www.lightnovelpub.com/app', 'https://www.lightnovelpub.com/app', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(10, 11, 'https://github.com/IrocNinoNiel/cmisid_ojt_mgmt_sys', 'https://github.com/IrocNinoNiel/cmisid_ojt_mgmt_sys', 'https://github.com/IrocNinoNiel/cmisid_ojt_mgmt_sys', 'https://github.com/IrocNinoNiel/cmisid_ojt_mgmt_sys', 'https://github.com/IrocNinoNiel/cmisid_ojt_mgmt_sys', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(11, 18, 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/view', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(12, 19, 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'N', '2022-04-24 20:07:52', '2022-05-20 18:26:29'),
+(13, 21, 'google.com', 'google.com', 'google.com', 'googl.com', 'google.com', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(14, 22, 'https://stackoverflow.com/questions/17295219/overflow-scroll-css-is-not-working-in-the-div', 'https://stackoverflow.com/questions/17295219/overflow-scroll-css-is-not-working-in-the-div', 'https://stackoverflow.com/questions/17295219/overflow-scroll-css-is-not-working-in-the-div', 'https://stackoverflow.com/questions/17295219/overflow-scroll-css-is-not-working-in-the-div', 'https://stackoverflow.com/questions/17295219/overflow-scroll-css-is-not-working-in-the-div', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(15, 24, 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/viewd', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/viewd', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/viewd', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/viewd', 'https://drive.google.com/file/d/18UVKqHgL1MfUkkHjUDoo8idJNYv_uBG4/viewd', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'N', '2022-04-24 20:07:52', '2022-05-24 06:59:02'),
+(16, 26, 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(17, 27, 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(18, 28, 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'https://www.google.com/', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(19, 30, 'https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#inbox', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(20, 33, 'https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#inbox', 'https://mail.google.com/mail/u/0/#inbox', 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_tasks`
+--
+
+CREATE TABLE `tbl_tasks` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `task_name` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `task_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `task_date` datetime NOT NULL,
+  `task_deadline` datetime NOT NULL,
+  `hours_rendered` int(10) UNSIGNED NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_tasks`
+--
+
+INSERT INTO `tbl_tasks` (`trans_id`, `division_id`, `task_name`, `task_description`, `task_date`, `task_deadline`, `hours_rendered`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(8, 1, 'Water the plants right now', 'please water it', '2022-05-03 00:00:00', '2022-05-07 00:00:00', 2, 'John', '2022-05-03 02:54:33', NULL, NULL, 'y', '2022-05-02 18:54:33', '2022-05-16 18:19:05'),
+(9, 1, 'Wash the dishes', 'please', '2022-05-04 00:00:00', '2022-05-05 00:00:00', 1, 'John', '2022-05-03 02:56:12', NULL, NULL, 'y', '2022-05-02 18:56:12', '2022-05-12 07:08:33'),
+(10, 1, 'qweqweqw', 'asdfasdfa', '2022-05-06 00:00:00', '2022-05-13 00:00:00', 33, 'John', '2022-05-03 02:59:14', NULL, NULL, 'y', '2022-05-02 18:59:14', '2022-05-02 18:59:14'),
+(11, 1, 'make a login page', 'Simple Laravel Login', '2022-05-03 00:00:00', '2022-05-10 00:00:00', 10, 'John', '2022-05-03 03:00:19', NULL, NULL, 'y', '2022-05-02 19:00:19', '2022-05-02 19:00:19'),
+(12, 1, 'go to grocery store 1', 'Buy stuff', '2022-05-04 00:00:00', '2022-05-06 00:00:00', 3, 'ana', '2022-05-04 02:45:16', NULL, NULL, 'y', '2022-05-03 18:45:16', '2022-05-25 13:01:48'),
+(13, 1, 'buy stuff', 'Buy stuff online', '2022-05-06 00:00:00', '2022-05-07 00:00:00', 3, 'John', '2022-05-04 02:48:34', NULL, NULL, 'y', '2022-05-03 18:48:34', '2022-05-03 18:48:34'),
+(14, 1, 'asdasdas', 'asdasdasd', '2022-05-05 00:00:00', '2022-05-19 00:00:00', 2, 'John', '2022-05-04 02:51:28', NULL, NULL, 'y', '2022-05-03 18:51:28', '2022-05-03 18:51:28'),
+(15, 1, 'zxczxczx', 'asdasd', '2022-05-05 00:00:00', '2022-05-11 00:00:00', 1, 'John', '2022-05-04 03:09:13', NULL, NULL, 'n', '2022-05-03 19:09:13', '2022-05-17 16:09:13'),
+(16, 1, 'Task1', 'Please do the task', '2022-05-11 00:00:00', '2022-05-12 00:00:00', 8, 'John', '2022-05-11 02:42:00', NULL, NULL, 'y', '2022-05-10 18:42:00', '2022-05-10 18:42:00'),
+(17, 2, 'task 2', 'Task desc', '2022-05-11 00:00:00', '2022-05-13 00:00:00', 3, 'John', '2022-05-11 02:42:48', NULL, NULL, 'y', '2022-05-10 18:42:48', '2022-05-10 18:42:48'),
+(20, 1, 'task all 123', 'Task all', '2022-05-02 00:00:00', '2022-05-06 00:00:00', 3, 'John', '2022-05-11 13:39:43', NULL, NULL, 'n', '2022-05-11 05:39:43', '2022-05-12 07:12:32'),
+(21, 1, 'task ind', 'task ind', '2022-05-02 00:00:00', '2022-05-07 00:00:00', 3, 'John', '2022-05-11 13:42:36', NULL, NULL, 'y', '2022-05-11 05:42:36', '2022-05-11 05:42:36'),
+(22, 2, 'Water the plants', 'task 1', '2022-05-01 00:00:00', '2022-05-07 00:00:00', 3, 'John', '2022-05-16 07:16:35', NULL, NULL, 'y', '2022-05-15 23:16:35', '2022-05-15 23:16:35'),
+(23, 2, 'Water the plants', 'task 1', '2022-05-01 00:00:00', '2022-05-07 00:00:00', 3, 'John', '2022-05-16 07:18:12', NULL, NULL, 'y', '2022-05-15 23:18:12', '2022-05-15 23:18:12'),
+(24, 1, 'asdasdas', 'asdasdas', '2022-05-02 00:00:00', '2022-05-25 00:00:00', 123, 'John', '2022-05-16 12:58:24', NULL, NULL, 'y', '2022-05-16 04:58:24', '2022-05-16 04:58:24'),
+(25, 1, 'task new', 'task new desc', '2022-05-01 00:00:00', '2022-05-26 00:00:00', 12, 'John', '2022-05-16 13:01:59', NULL, NULL, 'y', '2022-05-16 05:01:59', '2022-05-16 05:01:59'),
+(26, 1, 'Task for all Divisions', 'Task for all division', '2022-05-01 00:00:00', '2022-05-14 00:00:00', 33, 'John', '2022-05-18 13:50:41', NULL, NULL, 'y', '2022-05-18 05:50:41', '2022-05-18 05:50:41'),
+(27, 2, 'Task for all Divisions', 'Task for all division', '2022-05-01 00:00:00', '2022-05-14 00:00:00', 33, 'John', '2022-05-18 13:50:41', NULL, NULL, 'y', '2022-05-18 05:50:41', '2022-05-18 05:50:41'),
+(28, 3, 'Task for all Divisions', 'Task for all division', '2022-05-01 00:00:00', '2022-05-14 00:00:00', 33, 'John', '2022-05-18 13:50:41', NULL, NULL, 'y', '2022-05-18 05:50:41', '2022-05-18 05:50:41'),
+(29, 4, 'Task for all Divisions', 'Task for all division', '2022-05-01 00:00:00', '2022-05-14 00:00:00', 33, 'John', '2022-05-18 13:50:41', NULL, NULL, 'y', '2022-05-18 05:50:41', '2022-05-18 05:50:41'),
+(30, 1, 'Task for all Divisions 2', 'Task for all Divisions 2', '2022-05-01 00:00:00', '2022-05-06 00:00:00', 15, 'John', '2022-05-18 14:05:48', NULL, NULL, 'y', '2022-05-18 06:05:48', '2022-05-18 06:05:48'),
+(31, 2, 'Task for all Divisions 2', 'Task for all Divisions 2', '2022-05-01 00:00:00', '2022-05-06 00:00:00', 15, 'John', '2022-05-18 14:05:48', NULL, NULL, 'y', '2022-05-18 06:05:48', '2022-05-18 06:05:48'),
+(32, 3, 'Task for all Divisions 2', 'Task for all Divisions 2', '2022-05-01 00:00:00', '2022-05-06 00:00:00', 15, 'John', '2022-05-18 14:05:48', NULL, NULL, 'y', '2022-05-18 06:05:48', '2022-05-18 06:05:48'),
+(33, 4, 'Task for all Divisions 22', 'Task for all Divisions 2', '2022-05-01 00:00:00', '2022-05-06 00:00:00', 15, 'John', '2022-05-18 14:05:48', NULL, NULL, 'y', '2022-05-18 06:05:48', '2022-05-18 06:11:30'),
+(34, 1, 'Task for all Admin', 'Task for all Admin', '2022-05-01 00:00:00', '2022-05-07 00:00:00', 18, 'John', '2022-05-18 14:08:47', NULL, NULL, 'y', '2022-05-18 06:08:47', '2022-05-18 06:08:47'),
+(35, 3, 'Task 1 for Steph edited', 'Please Do this task properly', '2022-05-24 00:00:00', '2022-05-25 00:00:00', 24, 'staff name', '2022-05-24 15:01:45', NULL, NULL, 'y', '2022-05-24 07:01:45', '2022-05-24 07:02:10'),
+(36, 3, 'Task for Kevin', 'Please do this task kevin', '2022-05-26 00:00:00', '2022-05-27 00:00:00', 24, 'lebron', '2022-05-25 20:05:46', NULL, NULL, 'y', '2022-05-25 12:05:46', '2022-05-25 12:05:46'),
+(37, 4, 'Task for Steph1', 'This task is for you only', '2022-05-26 00:00:00', '2022-05-27 00:00:00', 24, 'ana', '2022-05-25 20:58:56', NULL, NULL, 'y', '2022-05-25 12:58:56', '2022-05-25 12:58:56'),
+(38, 1, 'Task for ana', 'Task description', '2022-05-26 00:00:00', '2022-05-27 00:00:00', 8, 'seth', '2022-05-26 08:19:15', NULL, NULL, 'y', '2022-05-26 00:19:15', '2022-05-26 00:19:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE `tbl_user` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `usertype_id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `school_id` bigint(20) UNSIGNED NOT NULL,
+  `course_id` bigint(20) UNSIGNED NOT NULL,
+  `first_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `middle_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birth_date` date NOT NULL,
+  `sex` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reference_code` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_completed` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_status` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `disapproved_remarks` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `total_hours` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`trans_id`, `usertype_id`, `division_id`, `school_id`, `course_id`, `first_name`, `middle_name`, `last_name`, `birth_date`, `sex`, `email`, `user_name`, `password`, `reference_code`, `create_date`, `last_user`, `last_date`, `is_completed`, `is_active`, `user_status`, `disapproved_remarks`, `start_date`, `end_date`, `total_hours`, `created_at`, `updated_at`) VALUES
+(1, 3, 1, 3, 3, 'John', 'B', 'Doe', '2000-01-01', 'm', 'johndoe@gmail.com', 'user_1', '$2y$10$.NGgwi3dJ6nbuWHcpAZlXuigTpx8.fdJZHDm8u/gsEcyf5zWhkX.S', '220408abc', '2022-05-03 00:00:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-02 16:00:52', '2022-05-17 15:44:34'),
+(2, 4, 1, 1, 1, 'yhoreala', 'nadua', 'butanas', '2022-05-04', 'f', 'user30@gmail.com', 'user1', '$2y$10$R.iaTT9OpL9ihBRlPjj6X.OxxQctO7XpmY9K5gx6Cou/7w0/FP2KS', '20220503TKQM', '2022-04-25 04:07:52', NULL, NULL, 'y', 'y', 'approved', NULL, '2022-01-01 09:02:17', '2022-05-27 09:02:29', 486, '2022-05-02 16:41:34', '2022-05-25 12:13:21'),
+(3, 4, 1, 1, 1, 'Nino niel', 'butanas', 'iroc', '2022-01-03', 'm', 'user2@gmail.com', 'user2', '$2y$10$CK1BS9vNuzhq6xnT4t27zOH8I5eIx7jYPQuEFfQgr3zGo1D3W/PYe', '20220503a2KF', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, '2022-03-01 09:02:56', '2022-05-27 09:02:52', 486, '2022-05-02 18:57:47', '2022-05-02 18:58:40'),
+(4, 4, 2, 2, 2, 'user3', 'user3', 'user3', '2007-05-02', 'm', 'user3@gmail.com', 'user3', '$2y$10$AZenb2ln1fggXP/4QV58tOZd0vo257mqXgkGId518w7vo1gUDpvXa', '20220505Owg3', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', '', '2022-05-02 00:00:00', '2022-05-18 00:00:00', 486, '2022-05-05 04:28:36', '2022-05-24 07:16:38'),
+(5, 4, 6, 2, 2, 'nino niel', 'butanas', 'iroc', '2022-05-01', 'm', 'user4@gmail.com', 'user4', '$2y$10$r2ce1iuFU9Xru0BXMZJneuxhzq5e5Tdlz3I/G3HBgf3LjxL1plFSS', '202205107r33', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, '2022-03-01 09:03:02', '2022-05-27 09:03:07', 486, '2022-05-09 23:01:32', '2022-05-11 04:37:38'),
+(6, 4, 1, 1, 1, 'Ana', 'Joe', 'Doe', '2022-05-01', 'm', 'user10@gmail.com', 'user6', '$2y$10$.T2tgwluVMJStS4LYLhPWuz67j2cCdo7rtEZO7X1zwXDqMu4bdnOG', '202205117697', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', 'kulang something', '2022-03-01 09:03:21', '2022-05-28 09:03:27', 486, '2022-05-10 18:20:55', '2022-05-11 04:40:25'),
+(8, 4, 4, 1, 1, 'ana', 'banana', 'doe', '2022-05-10', 'f', 'user11@gmail.com', 'user11', '$2y$10$7myKYjFqSRJVOhAj3qcS2OUKh3Azf/IeI4eoIpUG3C1b2OT3dABcG', '2022051272JV', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, '2022-03-01 09:04:15', '2022-05-27 09:04:11', 486, '2022-05-12 03:38:32', '2022-05-12 04:26:14'),
+(9, 4, 2, 2, 2, 'asdfasddfasdf', 'asddfasdfasdxcv', 'sddfsdfsd', '2022-05-11', 'm', 'sfsadd@EQWEQW', 'sdssdgsdf', '$2y$10$Zhle21E85KdZKzcmpxzdHel/K6hVzgbHeSBXbRZNLu1.DoPwh/2s2', '20220512vCOw', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, '2022-05-01 00:00:00', '2022-05-28 00:00:00', 486, '2022-05-12 04:27:13', '2022-05-14 14:49:49'),
+(10, 1, 4, 3, 1, 'Banana', 'B', 'DoeDoe', '2000-01-01', 'm', 'superadmin@gmail.com', 'user_10', '$2y$10$hTuwaofyghL7j4jVeeGUj.kFUqUfN2NAb0DTH2jWMqqWkQdpZXvqy', '220408abc', '2022-05-13 03:04:34', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-12 19:04:34', '2022-05-17 15:32:53'),
+(11, 4, 4, 1, 1, 'yhoreal', 'nadua', 'nadua', '2022-05-13', 'm', 'johndoe123123@gmail.com', 'sdfasfas', '$2y$10$opccmjfwYWlJDc1sYz7fyOyUD9OOjbHuvcEenRp4YD3ICiGhS9ZGO', '20220513Kwrb', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-12 19:49:20', '2022-05-19 14:58:41'),
+(12, 3, 3, 2, 2, 'staff first', 'staff midle', 'staff last', '2022-05-01', 'm', 'staff1@gmail.com', 'staff1', '$2y$10$S.Wx3ZCGhTOFO4JTpkvvt.TKYiwYT.vOFT5v8a8/cNHfyU87unDKm', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-13 03:21:23', '2022-05-13 03:21:23'),
+(13, 2, 2, 2, 2, 'felix', 'sdfasdf', 'iroc', '2022-05-01', 'm', 'sdafsd@qweqw', 'asdfasfs', '$2y$10$MVwBwxgNXTmlvnOIQ.F4W.coj7H4EWfTIYcRlgB9gomsh82hd4BUi', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-13 03:22:21', '2022-05-18 02:39:37'),
+(14, 2, 2, 1, 2, 'xzczxczx', 'adasdas', 'qweqweq', '2022-05-01', 'm', 'fasdfs@qweqw21', 'afsdfawerq', '$2y$10$WaC4ddsS3S5.1oCJefgh3e/hdo9Tpmwcb46CRt9EiUEXOxMYIWYwK', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-13 03:24:31', '2022-05-13 03:24:31'),
+(15, 3, 1, 7, 9, 'admin3', 'admin3', 'admin3', '2022-05-01', 'm', 'admin3@gmail.com', 'admin3', '$2y$10$jV95iVQWqcGq8msSB4.zCOkctKm8t50e3ghsJeWwwfHk3pJvtZH1C', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-17 15:26:46', '2022-05-17 15:26:46'),
+(16, 2, 3, 7, 9, 'mark', 'butanas', 'rover', '2022-05-01', 'm', 'mark16@gmail.com', 'mark16', '$2y$10$ql7ATNHfTyabP3V/V7iVleyxIM4FHzRBSwuDz76sVX8OQUCPTbP86', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-18 10:10:28', '2022-05-18 10:39:57'),
+(17, 3, 3, 7, 9, 'valkiry', 'doe', 'doe', '2022-05-04', 'm', 'iroc.niel123@gmail.com', 'valkiry18', '$2y$10$8C/7uprXsnC/adGrRafTUei3cNZ6RkNsy5d/UO8I8WWbmHJD8NZoq', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-19 13:18:18', '2022-05-23 22:22:19'),
+(18, 4, 2, 1, 1, 'Olivia', 'Duterter', 'Rodrigo', '2022-05-01', 'm', 'olivia@gmail.com', 'olivia123', '$2y$10$alPOlCon9/u43KVOMe/8Qebe4zauinOQI.R0a5ZBhzXXh9EV.wg9S', '20220520Th35', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-19 16:17:42', '2022-05-19 17:56:55'),
+(19, 4, 3, 2, 3, 'Pinto', 'Mariel', 'Mary', '2003-01-22', 'f', 'mary1@gmail.com', 'mary123', '$2y$10$IvTJQXOgmCcdWVkAX4vPluwhG6X0TwAdDdFvPsYQgG0WoMsZEQclS', '20220521uBiY', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', '', '2022-05-02 00:00:00', '2022-05-25 00:00:00', 486, '2022-05-20 18:05:59', '2022-05-24 07:18:08'),
+(20, 2, 2, 7, 9, 'staff3', 'staff4', 'staff5', '2022-05-03', 'f', 'staffuser@gmail.com', 'staffuser123', '$2y$10$Oku/lKdCMZukcoZehnemku.ERoSm5NhCM/2IW7BwPy5r4cL1QJdQ.', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-20 18:32:45', '2022-05-20 18:33:42'),
+(21, 4, 6, 1, 2, 'yhoreal', 'nadua', 'butanas', '2007-05-16', 'm', 'user31231@gmail.com', 'user1', '$2y$10$p.NuX5fI5.Pny4QN8IF7z.79bZPAxWlug06BMaZ8pI6s/6QdAMcT.', '20220522jr6W', '2022-04-25 04:07:52', NULL, NULL, 'n', 'N', 'for approval', NULL, NULL, NULL, NULL, '2022-05-22 00:25:34', '2022-05-22 00:25:34'),
+(22, 4, 6, 2, 1, 'yhoreal', 'nadua', 'butanas', '2007-05-08', 'm', 'user3333@gmail.com', 'NELSONIROC2020qqw', '$2y$10$VLgrS0QhplK07dMgfEmJXeRLEN1zzSWNdbrajDocBH1gK7lsRnwzK', '20220524IBUL', '2022-04-25 04:07:52', NULL, NULL, 'n', 'N', 'for approval', NULL, NULL, NULL, NULL, '2022-05-24 03:58:16', '2022-05-24 03:58:16'),
+(23, 3, 2, 7, 9, 'staff name', 'staff middlename', 'staff lastname', '2022-05-16', 'f', 'staffemail1@gmail.com', 'staffusername123', '$2y$10$MHdhUG/d9rvLMYISfTxZietTNzVWy6OiOtdFWyEKZLdmVETvyOSxy', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-24 06:55:04', '2022-05-24 06:56:13'),
+(24, 4, 3, 2, 2, 'steph john', 'doe', 'curry', '2007-05-01', 'm', 'ojt1@gmail.com', 'curry30', '$2y$10$iJQ957heLD9bxW5DdD5Gz.B8u.PYCNEE6GT9QpMxHUiDiey83/Mo.', '20220524ymmd', '2022-04-25 04:07:52', NULL, NULL, 'y', 'y', 'approved', '', '2022-05-01 00:00:00', '2022-05-31 00:00:00', 486, '2022-05-24 06:58:34', '2022-05-24 07:21:44'),
+(25, 2, 3, 7, 9, 'lebron', 'curry', 'james', '2018-01-02', 'm', 'staffemail2@gmail.com', 'lebron23', '$2y$10$L6wOLS9gbqaP4.9iBcn.SuFPSeyYGiK35Oev/pO91iBGAbACXSM46', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-25 12:00:12', '2022-05-25 12:00:51'),
+(26, 4, 3, 2, 1, 'kevin', 'james', 'durant', '2002-01-26', 'm', 'ojt3@gmail.com', 'kevin30', '$2y$10$1bFOgo/EEL65.ec1FEZfWuBSVLDL.fuooQvIRAaJ5x3QfkiUsFm1i', '20220525Xkf5', '2022-04-25 04:07:52', NULL, NULL, 'y', 'y', 'approved', NULL, '2022-05-01 04:16:41', '2022-05-07 04:16:45', 486, '2022-05-25 12:02:19', '2022-05-25 12:17:12'),
+(27, 4, 4, 1, 3, 'kyle', 'curr', 'lowry', '2007-05-26', 'm', 'ojt4@gmail.com', 'kyl123', '$2y$10$IXXMwTPtLauVwLNyioMr9O3XDWF9ts22aTnk/yQGVn656H4ixgY3G', '20220525l1zL', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, '2022-05-01 00:00:00', '2022-05-18 00:00:00', 486, '2022-05-25 12:15:30', '2022-05-25 12:15:54'),
+(28, 4, 3, 1, 2, 'sampmle', 'sample', 'sample', '2007-05-01', 'm', 'ojt5@gmail.com', 'sample123', '$2y$10$eVBQrKwKtwY/AzIq7nSqfeJZ9opOCUV/BktR6QCWPbxQrfu/1M49K', '20220525fo0I', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, '2022-05-01 00:00:00', '2022-05-31 00:00:00', 486, '2022-05-25 12:22:56', '2022-05-25 12:25:46'),
+(29, 2, 2, 7, 9, 'ana', 'curry', 'bron', '2022-05-01', 'f', 'staffemail3@gmail.com', 'ana123', '$2y$10$Go6ct5Azk2a9FJvaSbMdOOpMfMPFyRmb/g5RxKDrYcPPHnIWlkoKm', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-25 12:54:37', '2022-05-25 12:55:13'),
+(30, 4, 4, 2, 2, 'steph', 'doe', 'ana', '2007-05-07', 'm', 'ojt6@gmail.com', 'step35', '$2y$10$TNV7w4c1GXFRpliseEXNi.7dajMArTFLxL9dohWdGe.oPykF7Jhv.', '20220525B5mm', '2022-04-25 04:07:52', NULL, NULL, 'y', 'y', 'approved', NULL, '2022-05-01 00:00:00', '2022-05-31 00:00:00', 486, '2022-05-25 12:56:47', '2022-05-25 13:11:55'),
+(31, 3, 4, 7, 9, 'yhoreal', 'nadua', 'butanas', '2022-05-03', 'm', 'staffemail4@gmail.com', 'user30', '$2y$10$efh2Z/vTdl8JqTj8r43RNuGYu6HnlERzefi5lrhKom2NhFkm0H9IS', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-25 13:07:54', '2022-05-25 13:08:23'),
+(32, 3, 1, 7, 9, 'seth', 'butanas', 'curry', '2022-05-01', 'm', 'staffemail5@gmail.com', 'curry16', '$2y$10$LKlo3cNPvNNy.vQSvUacxeGVM7HSXPU579NO34DN9c8lYXLjCMaIC', 'null', '2022-04-25 04:07:52', NULL, NULL, 'n', 'y', 'approved', NULL, NULL, NULL, NULL, '2022-05-26 00:10:08', '2022-05-26 00:12:12'),
+(33, 4, 1, 1, 6, 'Ana', 'Doe', 'Butanas', '2007-05-01', 'm', 'ojt8@gmail.com', 'ana1234', '$2y$10$9WbCIVBF5OwfDxTn33nnOubSpzEVtbrVInktvbHA4cCD8rdzwl9RK', '20220526jsPP', '2022-04-25 04:07:52', NULL, NULL, 'y', 'y', 'approved', NULL, '2022-05-01 00:00:00', '2022-05-31 00:00:00', 486, '2022-05-26 00:14:13', '2022-05-26 00:25:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_permission`
+--
+
+CREATE TABLE `tbl_user_permission` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `usertype_id` bigint(20) UNSIGNED NOT NULL,
+  `module_name` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `can_create` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `can_access` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `can_update` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `can_delete` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_user_permission`
+--
+
+INSERT INTO `tbl_user_permission` (`trans_id`, `usertype_id`, `module_name`, `can_create`, `can_access`, `can_update`, `can_delete`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Task Management', 'y', 'y', 'y', 'y', 'Jonathan', '2022-05-16 10:33:57', NULL, NULL, 'y', '2022-05-16 02:33:57', '2022-05-25 12:42:39'),
+(2, 3, 'Task Management', 'y', 'y', 'y', 'y', 'Jonathan', '2022-05-16 10:33:57', NULL, NULL, 'y', '2022-05-16 02:33:57', '2022-05-26 00:18:20'),
+(3, 4, 'Task Management', 'y', 'y', 'y', 'n', 'Jonathan', '2022-05-16 10:33:57', NULL, NULL, 'y', '2022-05-16 02:33:57', '2022-05-26 00:27:33'),
+(4, 2, 'User Management', 'y', 'y', 'y', 'y', 'Jonathan', '2022-05-16 12:33:11', NULL, NULL, 'y', '2022-05-16 04:33:11', '2022-05-16 04:33:11'),
+(5, 3, 'User Management', 'y', 'y', 'y', 'n', 'Jonathan', '2022-05-16 12:33:11', NULL, NULL, 'y', '2022-05-16 04:33:11', '2022-05-16 05:33:07'),
+(6, 4, 'User Management', 'y', 'y', 'y', 'y', 'Jonathan', '2022-05-16 12:33:11', NULL, NULL, 'y', '2022-05-16 04:33:11', '2022-05-16 04:33:11'),
+(7, 2, 'Reports', 'y', 'y', 'y', 'n', 'Jonathan', '2022-05-16 12:40:04', NULL, NULL, 'y', '2022-05-16 04:40:04', '2022-05-16 04:40:11'),
+(8, 3, 'Reports', 'y', 'y', 'y', 'y', 'Jonathan', '2022-05-16 12:40:04', NULL, NULL, 'y', '2022-05-16 04:40:04', '2022-05-16 05:38:39'),
+(9, 4, 'Reports', 'y', 'y', 'y', 'y', 'Jonathan', '2022-05-16 12:40:04', NULL, NULL, 'y', '2022-05-16 04:40:04', '2022-05-16 16:55:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_skillset`
+--
+
+CREATE TABLE `tbl_user_skillset` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `skillset_id` bigint(20) UNSIGNED NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_user_skillset`
+--
+
+INSERT INTO `tbl_user_skillset` (`trans_id`, `user_id`, `skillset_id`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 1, 3, 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(2, 1, 2, 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(3, 2, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(4, 3, 3, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(7, 5, 1, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(8, 6, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(10, 8, 3, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(11, 9, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(12, 11, 1, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(13, 18, 3, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(16, 19, 1, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(17, 19, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(18, 19, 3, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(19, 4, 1, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(20, 4, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(21, 4, 3, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(22, 21, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(23, 22, 1, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(24, 22, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(26, 24, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(27, 26, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(28, 27, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(29, 27, 3, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(30, 28, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(31, 30, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52'),
+(32, 33, 2, 'Rendon', '2022-04-25 04:07:52', NULL, NULL, 'y', '2022-04-24 20:07:52', '2022-04-24 20:07:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_task`
+--
+
+CREATE TABLE `tbl_user_task` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `task_id` bigint(20) UNSIGNED NOT NULL,
+  `taskstatus_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `output_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_of_turnover` int(10) UNSIGNED NOT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `learn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_user_task`
+--
+
+INSERT INTO `tbl_user_task` (`trans_id`, `task_id`, `taskstatus_id`, `user_id`, `output_url`, `no_of_turnover`, `comment`, `learn`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 8, 4, 2, 'https://www.google.com/search?q=tab+management+in+vs+code&oq=tab+management+in+vs+code&aqs=chrome..69i57j33i21j33i22i29i30.6209j0j7&sourceid=chrome&ie=UTF-8', 1, 'Fantastic', 'learn how to', 'John', '2022-05-03 02:54:33', NULL, '2022-05-06 08:44:26', 'n', '2022-05-02 18:54:33', '2022-05-03 19:15:35'),
+(2, 9, 4, 2, 'https://www.figma.com/file/89ylsK9HiwE702iTh2rvtI/OJT-MGMT-System?node-id=70%3A2596', 0, 'Approved', 'learn how to draw', 'John', '2022-05-03 02:56:12', NULL, '2022-05-05 08:44:44', 'y', '2022-05-02 18:56:12', '2022-05-03 18:20:36'),
+(3, 10, 3, 3, NULL, 0, NULL, NULL, 'John', '2022-05-03 02:59:14', NULL, NULL, 'y', '2022-05-02 18:59:14', '2022-05-03 04:38:38'),
+(4, 11, 4, 2, 'https://dev.to/dalelantowork/laravel-8-traits-4ai', 0, 'Good job', 'ngiks', 'John', '2022-05-03 03:00:19', NULL, '2022-05-04 08:44:56', 'y', '2022-05-02 19:00:19', '2022-05-03 19:27:52'),
+(5, 11, 4, 3, 'https://www.google.com.ph/', 1, 'Good Job', 'I learn a lot', 'John', '2022-05-03 03:00:19', NULL, '2022-05-16 13:42:41', 'y', '2022-05-02 19:00:19', '2022-05-22 00:10:41'),
+(6, 12, 3, 2, NULL, 1, 'Lack of items', NULL, 'John', '2022-05-04 02:45:16', NULL, NULL, 'y', '2022-05-03 18:45:16', '2022-05-25 04:04:46'),
+(8, 13, 4, 2, 'https://www.figma.com/file/89ylsK9HiwE702iTh2rvtI/OJT-MGMT-System?node-id=0%3A1', 1, 'Good job', 'hello there', 'John', '2022-05-04 02:48:34', NULL, '2022-05-07 00:55:29', 'y', '2022-05-03 18:48:34', '2022-05-09 03:56:08'),
+(9, 13, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-04 02:48:34', NULL, NULL, 'y', '2022-05-03 18:48:34', '2022-05-03 18:48:34'),
+(10, 14, 4, 2, 'https://www.youtube.com/', 0, 'Good job', 'learn how to watch youtube video', 'John', '2022-05-04 02:51:28', NULL, '2022-05-10 02:17:48', 'y', '2022-05-03 18:51:28', '2022-05-09 18:19:00'),
+(11, 14, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-04 02:51:28', NULL, NULL, 'y', '2022-05-03 18:51:28', '2022-05-03 18:51:28'),
+(12, 15, 2, 2, NULL, 0, NULL, NULL, 'John', '2022-05-04 03:09:13', NULL, NULL, 'n', '2022-05-03 19:09:13', '2022-05-17 16:09:13'),
+(13, 16, 4, 2, 'https://www.figma.com/file/89ylsK9HiwE702iTh2rvtI/OJT-MGMT-System?node-id=70%3A2596', 1, 'Good job', 'I LEARN A LOT', 'John', '2022-05-11 02:42:00', NULL, '2022-05-11 02:55:50', 'y', '2022-05-10 18:42:00', '2022-05-10 18:56:35'),
+(14, 16, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-11 02:42:00', NULL, NULL, 'y', '2022-05-10 18:42:00', '2022-05-10 18:42:00'),
+(15, 16, 2, 5, NULL, 0, NULL, NULL, 'John', '2022-05-11 02:42:00', NULL, NULL, 'y', '2022-05-10 18:42:00', '2022-05-10 18:42:00'),
+(16, 16, 2, 6, NULL, 0, NULL, NULL, 'John', '2022-05-11 02:42:00', NULL, NULL, 'y', '2022-05-10 18:42:00', '2022-05-10 18:42:00'),
+(17, 20, 2, 2, NULL, 0, NULL, NULL, 'John', '2022-05-11 13:39:43', NULL, NULL, 'n', '2022-05-11 05:39:43', '2022-05-12 06:57:14'),
+(18, 20, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-11 13:39:43', NULL, NULL, 'n', '2022-05-11 05:39:43', '2022-05-12 07:12:32'),
+(19, 20, 3, 6, NULL, 0, NULL, NULL, 'John', '2022-05-11 13:39:43', NULL, NULL, 'n', '2022-05-11 05:39:43', '2022-05-12 07:12:32'),
+(20, 21, 2, 2, NULL, 0, NULL, NULL, 'John', '2022-05-11 13:42:36', NULL, NULL, 'y', '2022-05-11 05:42:36', '2022-05-25 04:04:44'),
+(21, 21, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-11 13:42:36', NULL, NULL, 'y', '2022-05-11 05:42:36', '2022-05-11 05:42:36'),
+(22, 8, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-13 02:46:27', NULL, NULL, 'y', '2022-05-12 18:46:27', '2022-05-12 18:46:27'),
+(24, 8, 2, 6, NULL, 0, NULL, NULL, 'John', '2022-05-13 02:47:30', NULL, NULL, 'n', '2022-05-12 18:47:30', '2022-05-16 18:20:41'),
+(25, 8, 1, 2, NULL, 1, 'You have wrong answer', 'asdasdas', 'John', '2022-05-13 02:51:12', NULL, NULL, 'y', '2022-05-12 18:51:12', '2022-05-25 04:07:48'),
+(26, 23, 2, 5, NULL, 0, NULL, NULL, 'John', '2022-05-16 07:18:12', NULL, NULL, 'y', '2022-05-15 23:18:12', '2022-05-15 23:18:12'),
+(27, 23, 2, 9, NULL, 0, NULL, NULL, 'John', '2022-05-16 07:18:12', NULL, NULL, 'y', '2022-05-15 23:18:12', '2022-05-15 23:18:12'),
+(28, 24, 2, 2, NULL, 0, NULL, NULL, 'John', '2022-05-16 12:58:24', NULL, NULL, 'y', '2022-05-16 04:58:24', '2022-05-16 04:58:24'),
+(29, 24, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-16 12:58:24', NULL, NULL, 'y', '2022-05-16 04:58:24', '2022-05-16 04:58:24'),
+(30, 25, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-16 13:01:59', NULL, NULL, 'y', '2022-05-16 05:01:59', '2022-05-16 05:01:59'),
+(31, 25, 2, 6, NULL, 0, NULL, NULL, 'John', '2022-05-16 13:01:59', NULL, NULL, 'y', '2022-05-16 05:01:59', '2022-05-16 05:01:59'),
+(32, 9, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-17 02:19:41', NULL, NULL, 'y', '2022-05-16 18:19:41', '2022-05-16 18:19:41'),
+(33, 8, 2, 6, NULL, 0, NULL, NULL, 'John', '2022-05-18 00:23:49', NULL, NULL, 'y', '2022-05-17 16:23:49', '2022-05-17 16:23:49'),
+(34, 26, 4, 2, 'https://www.google.com/', 0, 'Good Job', 'I learn a lot', 'John', '2022-05-18 13:50:41', NULL, '2022-05-22 08:09:54', 'y', '2022-05-18 05:50:41', '2022-05-22 00:10:44'),
+(35, 26, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-18 13:50:41', NULL, NULL, 'y', '2022-05-18 05:50:41', '2022-05-18 05:50:41'),
+(36, 26, 2, 6, NULL, 0, NULL, NULL, 'John', '2022-05-18 13:50:41', NULL, NULL, 'y', '2022-05-18 05:50:41', '2022-05-18 05:50:41'),
+(37, 27, 2, 9, NULL, 0, NULL, NULL, 'John', '2022-05-18 13:50:41', NULL, NULL, 'y', '2022-05-18 05:50:41', '2022-05-18 05:50:41'),
+(38, 29, 2, 8, NULL, 0, NULL, NULL, 'John', '2022-05-18 13:50:41', NULL, NULL, 'y', '2022-05-18 05:50:41', '2022-05-18 05:50:41'),
+(39, 29, 2, 11, NULL, 0, NULL, NULL, 'John', '2022-05-18 13:50:41', NULL, NULL, 'y', '2022-05-18 05:50:41', '2022-05-18 05:50:41'),
+(40, 30, 4, 2, 'https://www.google.com/', 0, 'Good Job', 'I learn to draw', 'John', '2022-05-18 14:05:48', NULL, '2022-05-22 08:10:21', 'y', '2022-05-18 06:05:48', '2022-05-22 00:10:47'),
+(41, 30, 2, 3, NULL, 0, NULL, NULL, 'John', '2022-05-18 14:05:48', NULL, NULL, 'y', '2022-05-18 06:05:48', '2022-05-18 06:05:48'),
+(42, 30, 2, 6, NULL, 0, NULL, NULL, 'John', '2022-05-18 14:05:48', NULL, NULL, 'y', '2022-05-18 06:05:48', '2022-05-18 06:05:48'),
+(43, 31, 2, 9, NULL, 0, NULL, NULL, 'John', '2022-05-18 14:05:48', NULL, NULL, 'y', '2022-05-18 06:05:48', '2022-05-18 06:05:48'),
+(44, 33, 2, 8, NULL, 0, NULL, NULL, 'John', '2022-05-18 14:05:48', NULL, NULL, 'y', '2022-05-18 06:05:48', '2022-05-18 06:05:48'),
+(45, 33, 2, 11, NULL, 0, NULL, NULL, 'John', '2022-05-18 14:05:48', NULL, NULL, 'y', '2022-05-18 06:05:48', '2022-05-18 06:05:48'),
+(46, 34, 2, 6, NULL, 0, NULL, NULL, 'John', '2022-05-18 14:08:47', NULL, NULL, 'y', '2022-05-18 06:08:47', '2022-05-18 06:08:47'),
+(47, 35, 2, 24, NULL, 0, NULL, NULL, 'staff name', '2022-05-24 15:01:45', NULL, NULL, 'n', '2022-05-24 07:01:45', '2022-05-24 07:02:33'),
+(48, 35, 4, 24, 'google.com', 0, 'Good job', 'I Learn a lot', 'staff name', '2022-05-24 15:02:48', NULL, '2022-05-24 15:07:32', 'y', '2022-05-24 07:02:48', '2022-05-24 07:09:05'),
+(49, 36, 4, 26, 'https://www.google.com/', 1, 'Good job', 'I learn to be rejected', 'lebron', '2022-05-25 20:05:46', NULL, '2022-05-25 20:07:45', 'y', '2022-05-25 12:05:46', '2022-05-25 12:08:37'),
+(50, 37, 4, 30, 'https://www.youtube.com/watch?v=mI1GhinyFzg', 1, 'Good job', 'I learn to be rejected', 'ana', '2022-05-25 20:58:56', NULL, '2022-05-25 21:09:27', 'y', '2022-05-25 12:58:56', '2022-05-25 13:09:37'),
+(51, 38, 4, 33, 'https://www.youtube.com/watch?v=mI1GhinyFzg', 1, 'Good job', 'I learn how to breath', 'seth', '2022-05-26 08:19:15', NULL, '2022-05-26 08:21:36', 'y', '2022-05-26 00:19:15', '2022-05-26 00:21:53'),
+(52, 10, 2, 6, NULL, 0, NULL, NULL, 'seth', '2022-05-26 08:23:27', NULL, NULL, 'n', '2022-05-26 00:23:27', '2022-05-26 00:23:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_type`
+--
+
+CREATE TABLE `tbl_user_type` (
+  `trans_id` bigint(20) UNSIGNED NOT NULL,
+  `user_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_user` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_date` datetime NOT NULL,
+  `last_user` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_date` datetime DEFAULT NULL,
+  `is_active` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_user_type`
+--
+
+INSERT INTO `tbl_user_type` (`trans_id`, `user_type`, `create_user`, `create_date`, `last_user`, `last_date`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'SuperAdmin', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(2, 'Staff', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(3, 'Admin', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52'),
+(4, 'Ojt', 'joshua', '2022-05-03 00:00:52', NULL, NULL, 'y', '2022-05-02 16:00:52', '2022-05-02 16:00:52');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `tbl_division`
+--
+ALTER TABLE `tbl_division`
+  ADD PRIMARY KEY (`trans_id`);
+
+--
+-- Indexes for table `tbl_ref_course`
+--
+ALTER TABLE `tbl_ref_course`
+  ADD PRIMARY KEY (`trans_id`);
+
+--
+-- Indexes for table `tbl_ref_school`
+--
+ALTER TABLE `tbl_ref_school`
+  ADD PRIMARY KEY (`trans_id`);
+
+--
+-- Indexes for table `tbl_ref_skillset`
+--
+ALTER TABLE `tbl_ref_skillset`
+  ADD PRIMARY KEY (`trans_id`);
+
+--
+-- Indexes for table `tbl_ref_taskstatus`
+--
+ALTER TABLE `tbl_ref_taskstatus`
+  ADD PRIMARY KEY (`trans_id`);
+
+--
+-- Indexes for table `tbl_requirements`
+--
+ALTER TABLE `tbl_requirements`
+  ADD PRIMARY KEY (`trans_id`),
+  ADD KEY `tbl_requirements_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `tbl_tasks`
+--
+ALTER TABLE `tbl_tasks`
+  ADD PRIMARY KEY (`trans_id`),
+  ADD KEY `tbl_tasks_division_id_foreign` (`division_id`);
+
+--
+-- Indexes for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`trans_id`),
+  ADD KEY `tbl_user_usertype_id_foreign` (`usertype_id`),
+  ADD KEY `tbl_user_division_id_foreign` (`division_id`),
+  ADD KEY `tbl_user_school_id_foreign` (`school_id`),
+  ADD KEY `tbl_user_course_id_foreign` (`course_id`);
+
+--
+-- Indexes for table `tbl_user_permission`
+--
+ALTER TABLE `tbl_user_permission`
+  ADD PRIMARY KEY (`trans_id`),
+  ADD KEY `tbl_user_permission_usertype_id_foreign` (`usertype_id`);
+
+--
+-- Indexes for table `tbl_user_skillset`
+--
+ALTER TABLE `tbl_user_skillset`
+  ADD PRIMARY KEY (`trans_id`),
+  ADD KEY `tbl_user_skillset_user_id_foreign` (`user_id`),
+  ADD KEY `tbl_user_skillset_skillset_id_foreign` (`skillset_id`);
+
+--
+-- Indexes for table `tbl_user_task`
+--
+ALTER TABLE `tbl_user_task`
+  ADD PRIMARY KEY (`trans_id`),
+  ADD KEY `tbl_user_task_task_id_foreign` (`task_id`),
+  ADD KEY `tbl_user_task_taskstatus_id_foreign` (`taskstatus_id`),
+  ADD KEY `tbl_user_task_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `tbl_user_type`
+--
+ALTER TABLE `tbl_user_type`
+  ADD PRIMARY KEY (`trans_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_division`
+--
+ALTER TABLE `tbl_division`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_ref_course`
+--
+ALTER TABLE `tbl_ref_course`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tbl_ref_school`
+--
+ALTER TABLE `tbl_ref_school`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_ref_skillset`
+--
+ALTER TABLE `tbl_ref_skillset`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_ref_taskstatus`
+--
+ALTER TABLE `tbl_ref_taskstatus`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_requirements`
+--
+ALTER TABLE `tbl_requirements`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `tbl_tasks`
+--
+ALTER TABLE `tbl_tasks`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_permission`
+--
+ALTER TABLE `tbl_user_permission`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_skillset`
+--
+ALTER TABLE `tbl_user_skillset`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_task`
+--
+ALTER TABLE `tbl_user_task`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_type`
+--
+ALTER TABLE `tbl_user_type`
+  MODIFY `trans_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_requirements`
+--
+ALTER TABLE `tbl_requirements`
+  ADD CONSTRAINT `tbl_requirements_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`trans_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tbl_tasks`
+--
+ALTER TABLE `tbl_tasks`
+  ADD CONSTRAINT `tbl_tasks_division_id_foreign` FOREIGN KEY (`division_id`) REFERENCES `tbl_division` (`trans_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD CONSTRAINT `tbl_user_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `tbl_ref_course` (`trans_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_user_division_id_foreign` FOREIGN KEY (`division_id`) REFERENCES `tbl_division` (`trans_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_user_school_id_foreign` FOREIGN KEY (`school_id`) REFERENCES `tbl_ref_school` (`trans_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_user_usertype_id_foreign` FOREIGN KEY (`usertype_id`) REFERENCES `tbl_user_type` (`trans_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tbl_user_permission`
+--
+ALTER TABLE `tbl_user_permission`
+  ADD CONSTRAINT `tbl_user_permission_usertype_id_foreign` FOREIGN KEY (`usertype_id`) REFERENCES `tbl_user_type` (`trans_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tbl_user_skillset`
+--
+ALTER TABLE `tbl_user_skillset`
+  ADD CONSTRAINT `tbl_user_skillset_skillset_id_foreign` FOREIGN KEY (`skillset_id`) REFERENCES `tbl_ref_skillset` (`trans_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_user_skillset_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`trans_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tbl_user_task`
+--
+ALTER TABLE `tbl_user_task`
+  ADD CONSTRAINT `tbl_user_task_task_id_foreign` FOREIGN KEY (`task_id`) REFERENCES `tbl_tasks` (`trans_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_user_task_taskstatus_id_foreign` FOREIGN KEY (`taskstatus_id`) REFERENCES `tbl_ref_taskstatus` (`trans_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_user_task_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`trans_id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

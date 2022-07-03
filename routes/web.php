@@ -29,24 +29,28 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/organization', [App\Http\Controllers\HomeController::class, 'showOrganization'])->name('organization');
     
     Route::get('/orglist', [App\Http\Controllers\HomeController::class, 'showOrgList'])->name('orglist');
-    Route::get('/applist', [App\Http\Controllers\HomeController::class, 'showAppList'])->name('applist');
-    Route::get('/eventlist', [App\Http\Controllers\HomeController::class, 'showEventList'])->name('eventlist');
 
-    // Sarf Routes
-    Route::get('/sarflist', [App\Http\Controllers\SarfController::class, 'sarflist'])->name('sarflist');
-    Route::get('/sarf', [App\Http\Controllers\SarfController::class, 'index'])->name('sarf');
-    Route::post('/sarf', [App\Http\Controllers\SarfController::class, 'store'])->name('sarf.store');
-    Route::get('/sarf/{sarf}',[App\Http\Controllers\SarfController::class, 'show'])->name('sarf.show');
-
+    Route::group(['prefix' => 'user'], function() { 
+         // Sarf Routes
+        Route::get('/sarflist', [App\Http\Controllers\user\SarfController::class, 'sarflist'])->name('sarflist');
+        Route::get('/sarf', [App\Http\Controllers\user\SarfController::class, 'index'])->name('sarf');
+        Route::post('/sarf', [App\Http\Controllers\user\SarfController::class, 'store'])->name('sarf.store');
+        Route::get('/sarf/{sarf}',[App\Http\Controllers\user\SarfController::class, 'show'])->name('sarf.show');
+    });
 
     Route::group(['middleware' => 'CheckRole', 'prefix' => 'admin'], function() { 
-        Route::resource('/college', App\Http\Controllers\CollegeController::class);
+        Route::resource('/college', App\Http\Controllers\admin\CollegeController::class);
         // User
-        Route::resource('/user', App\Http\Controllers\UserController::class);
-        Route::put('/user/{user}/editbasic',[App\Http\Controllers\UserController::class, 'updateBasicInformation'])->name('user.updateBasicInformation');
-        Route::put('/user/{user}/editemail',[App\Http\Controllers\UserController::class, 'updateEmail'])->name('user.updateEmail');
-        Route::put('/user/{user}/editpassword',[App\Http\Controllers\UserController::class, 'updatePassword'])->name('user.updatePassword');
-        Route::put('/user/{user}/editimage',[App\Http\Controllers\UserController::class, 'updateImage'])->name('user.updateImage');
+        Route::resource('/user', App\Http\Controllers\admin\UserController::class);
+        Route::put('/user/{user}/editbasic',[App\Http\Controllers\admin\UserController::class, 'updateBasicInformation'])->name('user.updateBasicInformation');
+        Route::put('/user/{user}/editemail',[App\Http\Controllers\admin\UserController::class, 'updateEmail'])->name('user.updateEmail');
+        Route::put('/user/{user}/editpassword',[App\Http\Controllers\admin\UserController::class, 'updatePassword'])->name('user.updatePassword');
+        Route::put('/user/{user}/editimage',[App\Http\Controllers\admin\UserController::class, 'updateImage'])->name('user.updateImage');
+
+        // Sarf
+        Route::get('/applist', [App\Http\Controllers\admin\SarfController::class, 'index'])->name('admin.applist');
+        Route::get('/eventlist', [App\Http\Controllers\admin\SarfController::class, 'showEventList'])->name('eventlist');
+
 
     });
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\user;
 
 use App\Models\Sarf;
 use Illuminate\Http\Request;
@@ -8,16 +8,28 @@ use App\Models\FileUserInput;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreSarfRequest;
+use App\Models\SpecificObjective;
+use App\Http\Controllers\Controller;
 
 class SarfController extends Controller
 {
     public function index(){
-        return view('sarf');
+        return view('user.sarf.sarf');
     }
 
     public function store(StoreSarfRequest $request) {
 
+        // dd($request->objectives);
+
         $sarf = Sarf::create($request->validated());
+
+        foreach($request->objectives as $obj) {
+            SpecificObjective::create([
+                'sarf_id' => $sarf->id,
+                'name'=>$obj
+            ]);
+        }
+
 
 
         if($request->has('files')) {
@@ -60,16 +72,16 @@ class SarfController extends Controller
             }
 
             // return redirect()->route('file.index')->with('success','File Uploaded Succesfully');
-            return view('sarf')->with('success','Sarf Created');
+            return view('user.sarf.sarf')->with('success','Sarf Created');
         }
     }
 
     public function sarflist() {
-        $sarfs = Sarf::all();
-        return view('sarflist')->with('sarfs', $sarfs);
+        $sarfs = Sarf::where('organization_id','=',Auth::user()->id)->get();
+        return view('user.sarf.sarflist')->with('sarfs', $sarfs);
     }
 
     public function show(Sarf $sarf) {
-        return view('sarf.show')->with('sarf',$sarf);
+        return view('user.sarf.show')->with('sarf',$sarf);
     }
 }
