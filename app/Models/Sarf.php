@@ -14,6 +14,7 @@ class Sarf extends Model
         'organization_id',
         'nameOfRepresentative',
         'titleOfTheEvent',
+        'typeOfTheEvent',
         'generalObjective',
         'dateOfEvent',
         'endDateOfTheEvent',
@@ -37,5 +38,9 @@ class Sarf extends Model
 
     public function specific() {
         return $this->hasMany(SpecificObjective::class,'sarf_id');
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class,'sarf_id');
     }
 }
