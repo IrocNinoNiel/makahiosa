@@ -17,4 +17,16 @@ class SarfController extends Controller
         $sarfs = Sarf::where('status','!=','pending')->get();
         return view('admin.sarf.eventlist')->with('sarfs',$sarfs);
     }
+
+    public function show(Sarf $sarf) {
+        return view('admin.sarf.show')->with('sarf',$sarf);
+    }
+    public function changeStatus(Request $request, Sarf $sarf) {
+
+        // $sarf = Sarf::find($id);
+        $sarf->status = $request->status;
+        $sarf->save();
+
+        return back();
+    }
 }

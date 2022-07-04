@@ -45,7 +45,7 @@
         @else
             <nav class="navbar navbar-expand-lg navbar-light bg-warning mb-5">
                 <div class="container-fluid">
-                    <a class="navbar-brand bg-white rounded-circle" href="#">
+                    {{-- <a class="navbar-brand bg-white rounded-circle" href="#">
                         <img src="{{asset('images/MagkahiOSA Logo (1).png')}}" width="50" height="40" alt="">
                     </a>
                     <a class="navbar-brand item" href="#">
@@ -55,15 +55,15 @@
                     <a class="navbar-brand bg-white img-nav" href="#">
                         <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""> -->
                         <i class="fa fa-bell m-auto"></i>
-                    </a>
+                    </a> --}}
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                
+
                 @if (!Auth::user()->is_admin)
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                            
+
                         </ul>
                         <div class="form-inline links">
                             <a class="nav-link font-weight-bold text-dark" href="{{ route('home') }}"><span>Home</span></a>|
@@ -75,20 +75,20 @@
                             <ul class="navbar-nav ms-auto">
                                 <!-- Authentication Links -->
                                 @guest
-                                
+
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }}
                                         </a>
-                
+
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
-                
+
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf
                                             </form>
@@ -101,7 +101,7 @@
                 @else
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                            
+
                         </ul>
                         <div class="form-inline links">
                             <div class="my-2 my-lg-0">
@@ -142,20 +142,20 @@
                             <ul class="navbar-nav ms-auto">
                                 <!-- Authentication Links -->
                                 @guest
-                                
+
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }}
                                         </a>
-                
+
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
-                
+
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf
                                             </form>
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                 @endif
-                
+
                 </div>
             </nav>
         @endguest

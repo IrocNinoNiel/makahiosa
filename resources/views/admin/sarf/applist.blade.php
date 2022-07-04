@@ -25,7 +25,19 @@
                         <div class="dropdown">
                             <button id="my-dropdown" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-pen"></i></button>
                             <div class="dropdown-menu" aria-labelledby="my-dropdown">
-                                <a class="dropdown-item" href="#">View</a>
+                                <a class="dropdown-item" href="{{ route('sarfadmin.show', $sarf->id) }}">View</a>
+                                <form action=" {{route('sarf.changeStatus', $sarf->id)}} " method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="status", value="approved">
+                                    <button type="submit" class="dropdown-item">Approved</button>
+                                </form>
+                                <form action=" {{route('sarf.changeStatus', $sarf->id)}} " method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="status", value="rejected">
+                                    <button type="submit" class="dropdown-item">Rejected</button>
+                                </form>
                             </div>
                         </div>
                     </div>
