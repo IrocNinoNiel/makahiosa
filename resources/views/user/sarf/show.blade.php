@@ -10,7 +10,10 @@
             </div>
             <div class="card-body">
                 <div class="card">
-                    <h4 class="my-3 mx-auto">Basic Information</h4>
+                    <div class="d-flex justify-content-between">
+                        <h4 class="my-3">Basic Information</h4>
+                        <a href="{{ route('sarf.editBasicInfo', $sarf->id) }}" class="btn btn-outline-warning">Edit</a>
+                    </div>
                     <ul class="list-group">
                         <li class="list-group-item">
                             Event Name : {{$sarf->titleOfTheEvent}}
@@ -69,7 +72,10 @@
                       </ul>
                 </div>
                 <div class="card my-3">
-                    <h4 class="my-3 mx-auto">File Attachment</h4>
+                    <div class="d-flex justify-content-between">
+                        <h4 class="my-3 mx-auto">File Attachment</h4>
+                        <a href="{{ route('sarf.editFiles', $sarf->id) }}" class="btn btn-outline-warning">Edit</a>
+                    </div>
                     <ul class="list-group">
                         @foreach ($sarf->files as $file)
                             <li class="list-group-item">
