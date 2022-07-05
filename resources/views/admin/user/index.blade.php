@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <div class="container m-auto w-50 pt-5 pb-5">
         <div class="my-3">
             @include('includes.message')
@@ -21,14 +22,23 @@
                     @foreach ($organizations as $organization)
                         <div class="d-flex justify-content-between">
                             <p> {{$organization->information->orgname}} </p>
-                            <div>
-                                <a href="{{ route('user.edit', $organization->id) }}" class="btn btn-outline-warning">Edit</a>
-                                <form action="{{ route('user.destroy', $organization->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                </form>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa-solid fa-location-arrow"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a href="{{ route('user.edit', $organization->id) }}" class="btn btn-outline-warning dropdown-item">Edit</a>
+                                    <a href="{{ route('user.show', $organization->id) }}" class="btn btn-outline-primary dropdown-item">Show</a>
+                                    <form action="{{ route('user.destroy', $organization->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger dropdown-item">Delete</button>
+                                    </form>
+                                </div>
+
                             </div>
+
                         </div>
                         <hr>
                     @endforeach

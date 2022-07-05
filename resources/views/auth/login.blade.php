@@ -62,7 +62,7 @@
                     <div class="container d-flex align-items-center justify-content-center flex-column h-100">
                         <img src="{{asset('images/logo-150x150.png')}}" class="img-fluid" alt="Logo" srcset="">
                         <br>
-                        <form class="pt-3 pb-0" style="background: #F7F7F7;width: 75%" method="POST" action="{{ route('login') }}">
+                        <form class="pt-3 pb-0" style="background: #F7F7F7;width: 75%" method="POST" action="{{ route('login.manual') }}">
                             @csrf
                             <div class="container px-4">
                                 <div class="form-floating mb-3">
@@ -90,7 +90,7 @@
                                         <a href="#ForgotPassword" target="_blank">Forgot password?</a>
                                         <p style="font-size: 11px">Cookies must be enabled in your browser</p>
                                     </div>
-                                </div>  
+                                </div>
                             </div>
 
                             {{-- <div class="px-4 input-group mb-3">

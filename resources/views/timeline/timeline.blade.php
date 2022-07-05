@@ -164,7 +164,6 @@
                                     }
                                 });
                             })
-
                             eventTitle.innerHTML = eventValues.titleOfTheEvent;
                             eventStatus.innerHTML = eventValues.status;
                             stardDate.innerHTML = eventValues.dateOfEvent;

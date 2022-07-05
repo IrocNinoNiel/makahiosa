@@ -14,8 +14,6 @@ class TimelineController extends Controller
 
     public function getAllEvent() {
 
-        // $events = Sarf::with('org')->get();
-
         $events = DB::table('sarves')
             ->join('users', 'users.id', '=', 'sarves.organization_id')
             ->join('user_information', 'users.id', '=', 'user_information.user_id')

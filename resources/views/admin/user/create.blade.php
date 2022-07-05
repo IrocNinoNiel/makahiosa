@@ -16,9 +16,9 @@
                     @csrf
                     <div class="form-group">
                         <label for="email_input">Email address</label>
-                        <input type="email" class="form-control" id="email_input" name="email_input" value="{{old('email_input')}}">
+                        <input type="email" class="form-control" id="email_input" name="email_input" value="{{old('email_input')}}" placeholder="Email Address">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="password_confirmation">Confirm Password</label>
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <label for="orgname">Organization Name</label>
