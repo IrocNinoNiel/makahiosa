@@ -25,7 +25,6 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'email_input'   => 'required|unique:users,email',
-            'password'      => 'required|confirmed|min:8',
             'orgname'       =>'required|unique:user_information,orgname',
             'adviser'       =>'required',
             'representative'=>'required',

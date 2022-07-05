@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\User;
 use App\Models\College;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\UserInformation;
 use App\Http\Controllers\Controller;
@@ -13,6 +14,7 @@ use App\Http\Requests\StoreBasicInfo;
 use App\Http\Requests\UpdateEmailInfo;
 use App\Http\Requests\UpdateImageInfo;
 use App\Http\Requests\StoreUserRequest;
+use App\Models\DefaultPassword;
 
 class UserController extends Controller
 {
@@ -20,6 +22,10 @@ class UserController extends Controller
 
         $organizations = User::where('is_admin','=',false)->where('status','=',true)->get();
         return view('admin.user.index')->with('organizations', $organizations);
+    }
+
+    public function show(User $user) {
+        return view('admin.user.show')->with('user',$user);
     }
 
     public function create() {
@@ -30,11 +36,17 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request) {
 
+        $random_password = Str::random(8);
 
         $user = new User;
         $user->email = $request->email_input;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make($random_password);
         $user->save();
+
+        DefaultPassword::create([
+            'user_id'=>$user->id,
+            'password'=>$random_password,
+        ]);
 
         $userinformation =  new UserInformation;
         $userinformation->user_id = $user->id;

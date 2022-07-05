@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function sarf(){
         return $this->hasMany(Sarf::class);
     }
+
+    public function default_pass(){
+        return $this->hasOne(DefaultPassword::class);
+    }
 }
