@@ -25,7 +25,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/timeline', [App\Http\Controllers\HomeController::class, 'showTimeline'])->name('timeline');
+    Route::get('/timeline', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
+    Route::get('/events', [App\Http\Controllers\TimelineController::class, 'getAllEvent'])->name('getAllEvent');
     Route::get('/organization', [App\Http\Controllers\HomeController::class, 'showOrganization'])->name('organization');
 
     Route::get('/orglist', [App\Http\Controllers\HomeController::class, 'showOrgList'])->name('orglist');

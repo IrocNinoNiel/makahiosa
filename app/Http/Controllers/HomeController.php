@@ -23,16 +23,12 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {   
+    {
         if(!Auth::user()->is_admin) {
             return view('home');
         }
 
         return view('homeadmin');
-    }
-
-    public function showTimeline() {
-        return view('timeline');
     }
 
     public function showOrganization() {

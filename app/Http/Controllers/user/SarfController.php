@@ -78,7 +78,7 @@ class SarfController extends Controller
     }
 
     public function sarflist() {
-        $sarfs = Sarf::where('organization_id','=',Auth::user()->id)->get();
+        $sarfs = Sarf::with('org')->where('organization_id','=',Auth::user()->id)->get();
         return view('user.sarf.sarflist')->with('sarfs', $sarfs);
     }
 
