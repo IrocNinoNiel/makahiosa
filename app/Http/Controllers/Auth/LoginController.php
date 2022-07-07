@@ -53,14 +53,11 @@ class LoginController extends Controller
         $checkDefaultPass = $this->checkForDefault($request->email, $request->password);
 
         if($checkDefaultPass) {
-            dd('Please Change your password');
+            return redirect()->route('password.index', $request->email);
         }
 
-
         if (Auth::attempt($credentials)) {
-
             $request->session()->regenerate();
-
             return redirect()->intended('home');
         }
 
@@ -75,8 +72,7 @@ class LoginController extends Controller
             return false;
         }
 
-        $findDefault = DefaultPassword::where('user_id','=',$user->id)->where('password','=',$password)->first();
-
+        $findDefault = DefaultPassword::where('user_id','=',$user->id)->where('password','=',$password)->where('status','=',true)->first();
 
         if(!$findDefault) {
             return false;
