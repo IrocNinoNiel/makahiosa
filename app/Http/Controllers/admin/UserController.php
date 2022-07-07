@@ -46,6 +46,7 @@ class UserController extends Controller
         DefaultPassword::create([
             'user_id'=>$user->id,
             'password'=>$random_password,
+            'status'=>true,
         ]);
 
         $userinformation =  new UserInformation;
@@ -68,7 +69,7 @@ class UserController extends Controller
 
     public function edit(User $user) {
 
-        $colleges = College::where('id','!=',1)->where('status','=',true)->get();
+        $colleges = College::where('id7','!=',1)->where('status','=',true)->get();
         return view('admin.user.edit')->with('user',$user)->with('colleges', $colleges);
     }
 

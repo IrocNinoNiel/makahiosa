@@ -21,9 +21,10 @@ Auth::routes();
 
 
 Route::post('/loginmanual',[App\Http\Controllers\Auth\LoginController::class, 'manual'])->name('login.manual');
+Route::get('/changedefaultpassword/{email}',[App\Http\Controllers\Auth\DefaultPasswordController::class, 'index'])->name('password.index');
+Route::post('/changedefaultpassword/{email}',[App\Http\Controllers\Auth\DefaultPasswordController::class, 'changetoNewPassword'])->name('password.change');
 
 Route::group(['middleware' => 'auth'], function() {
-
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/timeline', [App\Http\Controllers\TimelineController::class, 'index'])->name('timeline');
@@ -44,7 +45,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/sarf/{sarf}/editfile',[App\Http\Controllers\user\SarfController::class, 'editFiles'])->name('sarf.editFiles');
         Route::post('/sarf/{sarf}/editfile',[App\Http\Controllers\user\SarfController::class, 'addNewFile'])->name('sarf.addNewFile');
         Route::delete('/sarf/{fileUserInput}/filedelete',[App\Http\Controllers\user\SarfController::class, 'fileDelete'])->name('sarf.fileDelete');
-
     });
 
     Route::group(['middleware' => 'CheckRole', 'prefix' => 'admin'], function() {
@@ -61,9 +61,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/eventlist', [App\Http\Controllers\admin\SarfController::class, 'showEventList'])->name('eventlist');
         Route::get('/sarf/{sarf}',[App\Http\Controllers\admin\SarfController::class, 'show'])->name('sarfadmin.show');
         Route::put('/sarflist/{sarf}', [App\Http\Controllers\admin\SarfController::class, 'changeStatus'])->name('sarf.changeStatus');
-
     });
 
     Route::resource('/comment', App\Http\Controllers\CommentController::class);
-
  });
