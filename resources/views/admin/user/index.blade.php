@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <div class="container m-auto w-50 pt-5 pb-5">
         <div class="my-3">
             @include('includes.message')
