@@ -36,7 +36,11 @@
                                 <h1>any <b>questions</b></h1>
                             </div>
                             <div class="contact-form mt-5">
-                                <form action="">
+                                <div class="px-3">
+                                    @include('includes.message')
+                                </div>
+                                <form action="{{ route('mail.send') }}" method="POST">
+                                    @csrf
                                     <div class="form-group">
                                         <input type="email" class="form-control contact-email" id="email" name="email" placeholder="&#xf0e0; Enter email">
                                     </div>
@@ -44,7 +48,7 @@
                                         <textarea class="form-control" id="concern" name="concern" rows="6" placeholder="concern"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-outline-secondary">Submit</button>
+                                        <button type="submit" class="btn btn-outline-secondary">Submit</button>
                                     </div>
                                 </form>
                             </div>

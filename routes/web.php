@@ -47,6 +47,10 @@ Route::group(['middleware' => 'auth'], function() {
 
         // Contact and FAQ
         Route::get('/contact',[App\Http\Controllers\user\FAQController::class, 'index'])->name('contact.index');
+
+        // Send Email
+        Route::get('/mail',[App\Http\Controllers\user\FeedbackController::class, 'index'])->name('mail.index');
+        Route::post('/mail',[App\Http\Controllers\user\FeedbackController::class, 'send'])->name('mail.send');
     });
 
     Route::group(['middleware' => 'CheckRole', 'prefix' => 'admin'], function() {
