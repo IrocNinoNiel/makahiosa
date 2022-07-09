@@ -1,0 +1,39 @@
+.contact-email {
+    font-family: 'Helvetica', FontAwesome, sans-serif;
+}
+
+.contact-form input{
+    border-radius: 25px !important;
+}
+
+.contact-form textarea{
+    border-radius: 25px !important;
+}
+
+.contact-form button{
+    border-radius: 25px !important;
+}
+
+.contact-form-parent {
+    z-index: 1;
+    position: relative;
+    top     : -100px;
+}
+
+
+.head-title h1, h2 {
+    color: #fff;
+}
+
+
+@media only screen and (max-width: 700px) {
+    .contact-form-parent {
+        z-index : 0;
+        position: relative;
+        top     : 0px;
+    }
+
+    .head-title h1, h2 {
+        color: #000;
+    }
+}

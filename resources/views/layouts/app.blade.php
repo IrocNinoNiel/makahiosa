@@ -29,7 +29,8 @@
     <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> --}}
+    {{-- Font Awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
         .img-nav{
             border-radius: 50%;
@@ -70,7 +71,7 @@
                             <a class="nav-link font-weight-bold text-dark" href="{{ route('timeline') }}"><span>TIMELINE</span> </a>|
                             <a class="nav-link font-weight-bold text-dark" href="{{ route('user.index') }}">ORGANIZATION</a>|
                             <a class="nav-link font-weight-bold text-dark" href="{{ route('sarflist') }}">SARF</a>|
-                            <a class="nav-link btn bg-white rounded-pill ml-3 font-weight-bold contact-button" href="#">Contact Us</a>
+                            <a class="nav-link btn bg-white rounded-pill ml-3 font-weight-bold contact-button" href="{{ route('contact.index') }}">Contact Us</a>
 
                             <ul class="navbar-nav ms-auto">
                                 <!-- Authentication Links -->
@@ -79,7 +80,7 @@
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
+                                            {{ Auth::user()->information->orgname }}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -108,6 +109,9 @@
                                 <ul class="navbar-nav mr-auto">
                                     <li class="nav-item active">
                                         <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('faq.index') }}">FAQ</a>
                                     </li>
                                     <li class="nav-item active">
                                         <a class="nav-link" href="{{ route('college.index') }}">College Management <span class="sr-only">(current)</span></a>
@@ -146,7 +150,7 @@
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
+                                            {{ Auth::user()->information->orgname }}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
