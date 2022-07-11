@@ -6,6 +6,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @if (Auth::check())
+         <meta name="user_id" content="{{ Auth::user()->id }}" />
+    @endif
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -140,7 +143,7 @@
                                         <a class="nav-link" href="{{ route('timeline')}}">Timeline</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('organization') }}">Social</a>
+                                        <a class="nav-link" href="{{ route('message.index') }}">Social</a>
                                     </li>
                             </div>
                             <ul class="navbar-nav ms-auto">
@@ -170,7 +173,6 @@
                         </div>
                     </div>
                 @endif
-
                 </div>
             </nav>
         @endguest

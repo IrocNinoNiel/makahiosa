@@ -79,5 +79,5 @@ Route::group(['middleware' => 'auth'], function() {
     });
     // Comment per Sarf
     Route::resource('/comment', App\Http\Controllers\CommentController::class);
-    Route::resource('/message', App\Http\Controllers\MessageController::class);
+    Route::view('/message', view:'message.index')->name('message.index');
  });

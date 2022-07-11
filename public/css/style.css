@@ -76,11 +76,13 @@ body{
     width: 45px !important;
     height: 45px !important;
     border-radius: 50%;
+    border: 1px grey solid;
 }
 
 .people-list img {
     float: left;
-    border-radius: 50%
+    border-radius: 50%;
+    border: 1px grey solid;
 }
 
 .img-nav{
@@ -88,6 +90,7 @@ body{
     /* width:30px;
     height: 40px; */
     padding: 5px 10px 5px 10px;
+    border: 1px grey solid;
 }
 
 .people-list .about {
@@ -106,8 +109,11 @@ body{
 }
 
 .chat .chat-header img {
+    width: 45px !important;
+    height: 45px !important;
     float: left;
     border-radius: 40px;
+    border: 1px grey solid;
     width: 40px
 }
 
@@ -139,7 +145,10 @@ body{
 }
 
 .chat .chat-history .message-data img {
+    width: 45px !important;
+    height: 45px !important;
     border-radius: 40px;
+    border: 1px grey solid;
     width: 40px
 }
 

@@ -5,7 +5,21 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-<div class="container chat-container" id="app">
+<div id="app">
+    <message-app></message-app>
+</div>
+ <!-- Footer -->
+ <footer class="text-center text-lg-start bg-light text-muted mt-5">
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MAKAHIOSA</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+{{-- <div class="container chat-container">
     <div class="row clearfix">
         <div class="col">
             <div class="chat-app">
@@ -24,19 +38,17 @@
                         </div>
                     </div>
                     <ul class="list-unstyled chat-list mt-2 mb-0">
-                        @foreach ($users as $user)
-                            <li class="clearfix">
+                         <li class="clearfix">
                                 <div class="item">
-                                    <img src=" {{asset('images/'. $user->information->image)}} " alt="avatar">
+                                    <img src=" {{asset('images/desert-2.jpg')}} " alt="avatar">
 
                                     <i class="fa fa-circle online notify-badge"></i>
                                 </div>
                                 <div class="about">
-                                    <div class="name truncate">{{$user->information->orgname}}</div>
+                                    <div class="name truncate">Sample Org</div>
                                     <div class="status truncate">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, impedit error beatae aliquid odit, molestiae provident eveniet commodi blanditiis similique maiores explicabo! Quos dolorem at, accusamus amet qui facilis asperiores! </div>
                                 </div>
                             </li>
-                        @endforeach
                     </ul>
                 </div>
 
@@ -181,8 +193,8 @@
             </div>
         </div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</div> --}}
+{{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> --}}
 @endsection

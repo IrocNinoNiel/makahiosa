@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/users/{id}',[App\Http\Controllers\MessageController::class,'users']);
+Route::get('/user/{id}',[App\Http\Controllers\MessageController::class,'currentUser']);
+Route::get('/message/{to}/{from}',[App\Http\Controllers\MessageController::class,'getCurrentMessages']);
