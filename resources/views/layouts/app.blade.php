@@ -69,7 +69,7 @@
                         <div class="form-inline links">
                             <a class="nav-link font-weight-bold text-dark" href="{{ route('home') }}"><span>Home</span></a>|
                             <a class="nav-link font-weight-bold text-dark" href="{{ route('timeline') }}"><span>TIMELINE</span> </a>|
-                            <a class="nav-link font-weight-bold text-dark" href="{{ route('user.index') }}">ORGANIZATION</a>|
+                            <a class="nav-link font-weight-bold text-dark" href="{{ route('message.index') }}">ORGANIZATION</a>|
                             <a class="nav-link font-weight-bold text-dark" href="{{ route('sarflist') }}">SARF</a>|
                             <a class="nav-link btn bg-white rounded-pill ml-3 font-weight-bold contact-button" href="{{ route('contact.index') }}">Contact Us</a>
 
