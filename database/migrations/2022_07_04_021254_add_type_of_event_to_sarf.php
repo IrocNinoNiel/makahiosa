@@ -13,8 +13,8 @@ class AddTypeOfEventToSarf extends Migration
      */
     public function up()
     {
-        Schema::table('sarf', function (Blueprint $table) {
-            //
+        Schema::table('sarves', function (Blueprint $table) {
+            $table->string('typeOfTheEvent')->default('General');
         });
     }
 
