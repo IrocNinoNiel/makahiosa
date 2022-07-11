@@ -2,21 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href={{ asset('css/app.css') }}>
-<script src="{{ asset('js/app.js') }}" defer></script>
 
-<style>
-    .pagination{
-        color: #1b1855 !important;
-    }
-    @media (max-width: 1500px), screen and (max-height: 700px){
-      .hidden-sm{
-        display: none !important;
-      }
-      .login-container{
-          justify-content: center;
-      }
-    }
-</style>
 <section class="vh-100" >
     <div class="container-fluid h-100 p-0">
         <div class="login-container row h-100 g-0">

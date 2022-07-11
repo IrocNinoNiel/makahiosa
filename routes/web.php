@@ -77,6 +77,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('/faq/{faq}/delete',[App\Http\Controllers\admin\FAQController::class, 'destroy'])->name('faq.destroy');
         Route::get('/faq/{faq}/show',[App\Http\Controllers\admin\FAQController::class, 'show'])->name('faq.show');
     });
-
+    // Comment per Sarf
     Route::resource('/comment', App\Http\Controllers\CommentController::class);
+    Route::view('/message', view:'message.index')->name('message.index');
  });
