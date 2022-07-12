@@ -27,4 +27,20 @@ class MessageController extends Controller
                         })
                         ->get();
     }
+
+    public function storeMessage(Request $request) {
+        // Message::create([
+        //     'to' = $request->to,
+        //     'from' = $request->from
+        // ]);
+
+        $message = new Message();
+        $message->to = $request->to;
+        $message->from = $request->from;
+        $message->text = $request->text;
+        $message->save();
+
+
+        return 'Message Saved';
+    }
 }

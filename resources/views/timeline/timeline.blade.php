@@ -82,13 +82,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" >
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous" >
     </script>
-    {{-- <script src="assets/js/app.js"></script> --}}
-
     <script>
         let calendar;
         let eventTitle = document.getElementById("eventTitle");
@@ -181,16 +179,6 @@
                 }
             });
         });
-    </script>
 
-    <!-- Footer -->
-    <footer class="text-center text-lg-start bg-light text-muted mt-5">
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            © 2021 Copyright:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MAKAHIOSA</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
+    </script>
 @endsection

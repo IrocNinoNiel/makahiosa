@@ -13,7 +13,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
@@ -44,7 +43,7 @@
     </style>
 </head>
 <body>
-    <div id="app">
+    <div>
         @guest
         @else
             <nav class="navbar navbar-expand-lg navbar-light bg-warning mb-5">
@@ -180,6 +179,18 @@
         <main class="">
             @yield('content')
         </main>
+        <!-- Footer -->
+        @if (Auth::check())
+            <footer class="text-center text-lg-start bg-light text-muted mt-5">
+                <!-- Copyright -->
+                <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                    © 2021 Copyright:
+                    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Iroc Company</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+            <!-- Footer -->
+        @endif
     </div>
 </body>
 </html>

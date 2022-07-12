@@ -7,8 +7,8 @@
                         <div class="input-group header-function">
                             <input type="text" class="form-control rounded-pill icon" placeholder="Search...">
                             <div class="hidden-sm text-right">
-                                <a href="javascript:void(0);" class="btn dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
-                                <a href="javascript:void(0);" class="btn dropdown" data-toggle="dropdown"><i class="fa fa-plus"></i></a>
+                                <a href="" class="btn dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+                                <a href="" class="btn dropdown" data-toggle="dropdown"><i class="fa fa-plus"></i></a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="#">Action</a>
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <ul class="list-unstyled chat-list mt-2 mb-0">
-                            <li class="clearfix" v-for="user in users" :key="user.id" @click="changeMessenger(user)">
+                            <li class="clearfix" v-for="(user, index) in users" :key="user.id" @click="changeMessenger(user)">
                                     <div class="item">
                                         <!-- <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar"> -->
                                         <img :src="'/images/'+user.information.image" alt="avatar">
@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="about">
                                         <div class="name truncate">{{ user.information.orgname }}</div>
-                                        <div class="status truncate">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, impedit error beatae aliquid odit, molestiae provident eveniet commodi blanditiis similique maiores explicabo! Quos dolorem at, accusamus amet qui facilis asperiores! </div>
+                                        <div class="status truncate">{{ excerptList[index]}}</div>
                                     </div>
                                 </li>
                         </ul>
@@ -37,7 +37,7 @@
                         <div class="chat-header clearfix">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                    <a href="" data-toggle="modal" data-target="#view_info">
                                         <img :src="'/images/'+currentChat.information.image" alt="avatar">
                                     </a>
                                     <div class="chat-about">
@@ -47,27 +47,28 @@
                                 </div>
                                 <div class="col-lg-6 hidden-sm text-right">
 
-                                    <a href="javascript:void(0);" class="btn"><i class="fa fa-search"></i></a>
+                                    <a href="" class="btn"><i class="fa fa-search"></i></a>
 
-                                    <a href="javascript:void(0);" class="btn dropdown" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
+                                    <a href="" class="btn dropdown" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">Action</a>
                                         <a class="dropdown-item" href="#">Another action</a>
                                         <a class="dropdown-item" href="#">Something else here</a>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                         <div class="chat-history">
-                            <ul class="m-b-0">
+                            <ul class="m-b-0 chat-history-box">
                                 <li class="clearfix" v-for="message in currentChatMessage" :key="message.id">
                                     <div v-if="message.from == user_id">
 
                                         <div class="message-data text-right">
                                         <span class="message-data-time">{{timeChatSend(message.created_at)}}, {{dateFromNow(message.created_at)}}</span>
-                                        <img :src="'/images/'+currentUser.information.image"  alt="avatar">
+                                        <img v-if="typeof(currentUser.information.image) == 'undefined' || currentUser.information.image == null" :src="'/images/default.jpg'"  alt="avatar">
+
+                                        <img v-else :src="'/images/'+currentUser.information.image"  alt="avatar">
                                         </div>
                                         <div class="message other-message float-right"> {{message.text}}</div>
                                     </div>
@@ -120,50 +121,87 @@
             return {
                 users: [],
                 user_id: this.$userId,
-                currentUser:{},
-                currentChat:{},
+                currentUser:{
+                    information:{
+                        image:'default.jpg'
+                    }
+                },
+                currentChat:{
+                    information:{
+                        image:'default.jpg'
+                    }
+                },
                 currentChatMessage:[],
                 text: '',
                 count: 2,
+                excerptList:[],
             }
         },
-        mounted() {
-            this.loadUsers();
-            this.loadUser();
+        async created() {
+            const users = await axios.get('/api/users/'+this.user_id);
+            if(users.data) {
+                this.users = users.data;
+                this.currentChat = users.data[0];
+                this.loadCurrentChatMessage(users.data[0].id);
+            }
+
+            const user = await axios.get('/api/user/'+this.user_id);
+            if(user.data) {
+               this.currentUser = user.data;
+            }
+
+            this.users.forEach((value, index) => {
+                this.loadExcerpt(value.id);
+            });
+
+            console.log(this.excerptList);
+
+
+
+            // this.loadUsers();
+            // this.loadUser();
         },
         methods: {
-            loadUsers: function() {
-                // Load Users with API
-                axios.get('/api/users/'+this.user_id)
-                    .then((response) => {
-                        this.users = response.data;
-                        this.currentChat = this.users[0];
-                        this.loadCurrentChatMessage(this.currentChat.id);
-                    })
-                    .catch( function(error){
-                        console.log(error);
-                    });
-            },
-             loadUser: function() {
-                // Load Users with API
-                axios.get('/api/user/'+this.user_id)
-                    .then((response) => {
-                        this.currentUser = response.data;
-                    })
-                    .catch( function(error){
-                        console.log(error);
-                    });
-            },
+            // loadUsers: function() {
+            //     // Load Users with API
+            //     axios.get('/api/users/'+this.user_id)
+            //         .then((response) => {
+            //             this.users = response.data;
+            //             this.currentChat = this.users[0];
+            //             this.loadCurrentChatMessage(this.currentChat.id);
+            //         })
+            //         .catch( function(error){
+            //             console.log(error);
+            //         });
+            // },
+            //  loadUser: function() {
+            //     // Load Users with API
+            //     axios.get('/api/user/'+this.user_id)
+            //         .then((response) => {
+            //             this.currentUser = response.data;
+            //         })
+            //         .catch( function(error){
+            //             console.log(error);
+            //         });
+            // },
             loadCurrentChatMessage: function(to) {
                 // Load Users with API
                 axios.get('/api/message/'+this.user_id+'/'+to)
                     .then((response) => {
                         this.currentChatMessage = response.data;
-                        console.log(this.currentChatMessage)
                     })
                     .catch( function(error){
                         console.log(error);
                     });
+            },
+            loadExcerpt: async function(to) {
+                const text = await axios.get('/api/message/'+this.user_id+'/'+to);
+                if(text.data.length != 0){
+                     this.excerptList.push(text.data[text.data.length-1].text);
+                }else {
+                     this.excerptList.push('You are now Connected');
+                }
+
             },
             changeMessenger: function(user) {
                 this.currentChat = user;
@@ -185,10 +223,21 @@
                     'updated_at':new Date()
                 }
 
-                // console.log(message);
                 this.currentChatMessage.push(message);
-
                 this.text = '';
+
+                axios.post('/api/message', message)
+                    .then(res => {
+                        console.log(res.data);
+                    }).catch(err => {
+                        console.log(err)
+                    })
+
+                this.scrollToBottom();
+            },
+            scrollToBottom() {
+                const container = document.querySelector(".chat-history");
+                container.scrollTo(0,container.scrollHeight);
             }
         }
     }
