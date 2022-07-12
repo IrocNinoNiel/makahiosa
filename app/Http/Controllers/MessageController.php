@@ -40,7 +40,6 @@ class MessageController extends Controller
         $message->text = $request->text;
         $message->save();
 
-
         return 'Message Saved';
     }
 }

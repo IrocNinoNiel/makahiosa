@@ -9,7 +9,6 @@
                             <div class="hidden-sm text-right">
                                 <a href="" class="btn dropdown" data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
                                 <a href="" class="btn dropdown" data-toggle="dropdown"><i class="fa fa-plus"></i></a>
-
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="#">Action</a>
                                     <a class="dropdown-item" href="#">Another action</a>
@@ -153,13 +152,6 @@
             this.users.forEach((value, index) => {
                 this.loadExcerpt(value.id);
             });
-
-            console.log(this.excerptList);
-
-
-
-            // this.loadUsers();
-            // this.loadUser();
         },
         methods: {
             // loadUsers: function() {

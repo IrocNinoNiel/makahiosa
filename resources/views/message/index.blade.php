@@ -9,7 +9,6 @@
     <message-app></message-app>
 </div>
 
-<script src="{{ asset('/js/app.js') }}" defer></script>
 
 {{-- <div class="container chat-container">
     <div class="row clearfix">
