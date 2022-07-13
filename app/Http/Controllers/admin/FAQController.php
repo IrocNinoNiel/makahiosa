@@ -5,7 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Models\FAQ;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreFAQRequest;
+use Illuminate\Support\Facades\Validator;
 
 class FAQController extends Controller
 {

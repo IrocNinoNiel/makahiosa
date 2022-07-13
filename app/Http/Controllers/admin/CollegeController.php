@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\College;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreCollegeRequest;
 
 class CollegeController extends Controller

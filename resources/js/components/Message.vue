@@ -153,6 +153,11 @@
                 this.loadExcerpt(value.id);
             });
         },
+        mounted() {
+            Echo.channel('channel').listen('Hello', (e) => {
+                console.log(e);
+            });
+        },
         methods: {
             // loadUsers: function() {
             //     // Load Users with API
