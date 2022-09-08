@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="w-100 m-auto text-center">
-                            <img src="{{ asset('images/logo-150x150.png')}}" alt="" width="250px">
+                            <img src="{{ asset('images/desert-2.jpg')}}" alt="" width="250px">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6">
@@ -58,14 +58,4 @@
             </div>
         </div>
     </div>
-        <!-- Footer -->
-    <footer class="text-center text-lg-start bg-light text-muted mt-5">
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2021 Copyright:
-        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MAKAHIOSA</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
 @endsection

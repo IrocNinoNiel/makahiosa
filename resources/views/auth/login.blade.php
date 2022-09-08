@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href={{ asset('css/app.css') }}>
+<link rel="stylesheet" href={{ asset('css/message.css') }}>
 
 <section class="vh-100" >
     <div class="container-fluid h-100 p-0">

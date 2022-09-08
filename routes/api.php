@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/users/{id}',[App\Http\Controllers\MessageController::class,'users']);
 Route::get('/user/{id}',[App\Http\Controllers\MessageController::class,'currentUser']);
 Route::get('/message/{to}/{from}',[App\Http\Controllers\MessageController::class,'getCurrentMessages']);
+Route::post('/message',[App\Http\Controllers\MessageController::class,'storeMessage']);

@@ -1,17 +1,7 @@
 <?php
 
+use App\Events\Hello;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -80,4 +70,9 @@ Route::group(['middleware' => 'auth'], function() {
     // Comment per Sarf
     Route::resource('/comment', App\Http\Controllers\CommentController::class);
     Route::view('/message', view:'message.index')->name('message.index');
+ });
+
+
+ Route::get('/broadcast', function() {
+    broadcast(new Hello());
  });

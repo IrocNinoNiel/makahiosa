@@ -1,0 +1,11 @@
+.pagination{
+    color: #1b1855 !important;
+}
+@media (max-width: 1500px), screen and (max-height: 700px){
+  .hidden-sm{
+    display: none !important;
+  }
+  .login-container{
+      justify-content: center;
+  }
+}
